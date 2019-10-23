@@ -1,0 +1,218 @@
+
+##################Creating replication controller yaml file ###########################
+uch$ cat replica-controller.yaml
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: hello-visits-controller
+spec:
+  replicas: 2
+  # selector identifies the set of Pods that this
+  # replication controller is responsible for managing
+  selector:
+    app: hello-visits
+  # podTemplate defines the 'cookie cutter' used for creating
+  # new pods when necessary
+  template:
+    metadata:
+      labels:
+        # Important: these labels need to match the selector above
+        # The api server enforces this constraint.
+        app: hello-visits
+    spec:
+      containers:
+      - name: hello-visits
+        image: meencloud/hello-visits:v5
+        ports:
+        - containerPort: 80
+kind: Service
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+
+########################### Creating replication controller ###########################
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl create -f
+deployment.yaml          pod-container.yaml       replica-controller.yaml  service.yaml
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl create -f
+deployment.yaml          pod-container.yaml       replica-controller.yaml  service.yaml
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl create -f replica-controller.yaml
+replicationcontroller/hello-visits-controller created
+
+
+########################### Checking pods ###########################
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                            READY   STATUS    RESTARTS   AGE
+hello-visits-controller-gf42m   1/1     Running   0          5s
+hello-visits-controller-mg5dw   1/1     Running   0          5s
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get deployments
+No resources found.
+
+########################### checking rc ###########################
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get rc
+NAME                      DESIRED   CURRENT   READY   AGE
+hello-visits-controller   2         2         2       16s
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get rc
+NAME                      DESIRED   CURRENT   READY   AGE
+hello-visits-controller   2         2         2       17s
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                            READY   STATUS    RESTARTS   AGE
+hello-visits-controller-gf42m   1/1     Running   0          23s
+hello-visits-controller-mg5dw   1/1     Running   0          23s
+SEVELUCH-M-R0YB:yaml seveluch$ curl $(minikube ip):80
+curl: (7) Failed to connect to 172.16.2.133 port 80: Connection refused
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ ls
+deployment.yaml		pod-container.yaml	replica-controller.yaml	service.yaml
+SEVELUCH-M-R0YB:yaml seveluch$ vi service.yaml
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ cp service.yaml service1.yaml
+SEVELUCH-M-R0YB:yaml seveluch$ vi service1.yaml
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl create -f service1.yaml
+kind: Service
+service/hello-visits created
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get services
+NAME           TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+hello-visits   NodePort    10.106.141.128   <none>        80:30354/TCP   5s
+kubernetes     ClusterIP   10.96.0.1        <none>        443/TCP        1d
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get services
+NAME           TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+hello-visits   NodePort    10.106.141.128   <none>        80:30354/TCP   7s
+kubernetes     ClusterIP   10.96.0.1        <none>        443/TCP        1d
+SEVELUCH-M-R0YB:yaml seveluch$ curl $(minikube ip):20354
+curl: (7) Failed to connect to 172.16.2.133 port 20354: Connection refused
+kind: Service
+SEVELUCH-M-R0YB:yaml seveluch$ curl $(minikube ip):30354
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-controller-mg5dw<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Random Number :</b> 36770SEVELUCH-M-R0YB:yaml seveluch$ curl $(minikube ip):30354
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-controller-mg5dw<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Random Number :</b> 427851SEVELUCH-M-R0YB:yaml seveluch$ curl $(minikube ip):30354
+kind: Service
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-controller-gf42m<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Random Number :</b> 262992SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ pwd
+/Users/seveluch/Documents/DEVOPS/kubernetes/yaml
+SEVELUCH-M-R0YB:yaml seveluch$ ls
+deployment.yaml		pod-container.yaml	replica-controller.yaml	service.yaml		service1.yaml
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl delete services/hello-visits
+service "hello-visits" deleted
+SEVELUCH-M-R0YB:yaml seveluch$
+kind: Service
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ vi service1.yaml
+SEVELUCH-M-R0YB:yaml seveluch$ !c
+curl $(minikube ip):30354
+curl: (7) Failed to connect to 172.16.2.133 port 30354: Connection refused
+SEVELUCH-M-R0YB:yaml seveluch$ !cp
+cp service.yaml service1.yaml
+SEVELUCH-M-R0YB:yaml seveluch$ !v
+vi service1.yaml
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl create -f service1.yaml
+error: error validating "service1.yaml": error validating data: ValidationError(Service.spec.ports[0]): missing required field "port" in io.k8s.api.core.v1.ServicePort; if you choose to ignore these errors, turn validation off with --validate=false
+SEVELUCH-M-R0YB:yaml seveluch$ !v
+vi service1.yaml
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ ls
+deployment.yaml		pod-container.yaml	replica-controller.yaml	service.yaml		service1.yaml
+SEVELUCH-M-R0YB:yaml seveluch$ vi service.yaml
+SEVELUCH-M-R0YB:yaml seveluch$
+kind: Service
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ vi service.yaml
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+kind: Service
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl delete services/hello-visits
+Error from server (NotFound): services "hello-visits" not found
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl create -f service.yaml
+error: error validating "service.yaml": error validating data: ValidationError(Service.spec.ports[0]): unknown field "NodePort" in io.k8s.api.core.v1.ServicePort; if you choose to ignore these errors, turn validation off with --validate=false
+SEVELUCH-M-R0YB:yaml seveluch$ !v
+vi service.yaml
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ !k
+kubectl create -f service.yaml
+The Service "hello-visits" is invalid: spec.ports[0].nodePort: Forbidden: may not be used when `type` is 'ClusterIP'
+SEVELUCH-M-R0YB:yaml seveluch$ !v
+vi service.yaml
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ cat service1.yaml
+kind: Service
+apiVersion: v1
+metadata:
+  name: hello-visits
+spec:
+  type: NodePort
+  selector:
+    app: hello-visits
+  ports:
+  - protocol: TCP
+    targetPort: 80
+SEVELUCH-M-R0YB:yaml seveluch$ !v
+vi service.yaml
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ !k
+kubectl create -f service.yaml
+The Service "hello-visits" is invalid: spec.ports[0].nodePort: Invalid value: 8080: provided port is not in the valid range. The range of valid ports is 30000-32767
+SEVELUCH-M-R0YB:yaml seveluch$ !v
+vi service.yaml
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ !k
+kubectl create -f service.yaml
+service/hello-visits created
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get services
+NAME           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+hello-visits   NodePort    10.109.41.146   <none>        80:30080/TCP   10s
+kubernetes     ClusterIP   10.96.0.1       <none>        443/TCP        1d
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get services
+NAME           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+hello-visits   NodePort    10.109.41.146   <none>        80:30080/TCP   12s
+kubernetes     ClusterIP   10.96.0.1       <none>        443/TCP        1d
+SEVELUCH-M-R0YB:yaml seveluch$ curl $(minikube ip):30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-controller-mg5dw<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Random Number :</b> 957857SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ curl $(minikube ip):30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-controller-gf42m<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Random Number :</b> 919741SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+kNAME                            READY   STATUS    RESTARTS   AGE
+hello-visits-controller-gf42m   1/1     Running   0          11m
+hello-visits-controller-mg5dw   1/1     Running   0          11m
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl delete pods/hello-visits-controller-gf42m
+pod "hello-visits-controller-gf42m" deleted
+
+
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                            READY   STATUS    RESTARTS   AGE
+hello-visits-controller-mg5dw   1/1     Running   0          12m
+hello-visits-controller-xt6vb   1/1     Running   0          1m
+SEVELUCH-M-R0YB:yaml seveluch$ curl $(minikube ip):30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-controller-xt6vb<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Random Number :</b> 475506SEVELUCH-M-R0YB:yaml seveluch$ curl $(minikube ip):30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-controller-mg5dw<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Random Number :</b> 771931SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$

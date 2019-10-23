@@ -1,0 +1,1004 @@
+ash-3.2$ kubectl get pods --label hello-visits2
+Error: unknown flag: --label
+
+
+Examples:
+  # List all pods in ps output format.
+  kubectl get pods
+
+  # List all pods in ps output format with more information (such as node name).
+  kubectl get pods -o wide
+
+  # List a single replication controller with specified NAME in ps output format.
+  kubectl get replicationcontroller web
+
+  # List deployments in JSON output format, in the "v1" version of the "apps" API group:
+  kubectl get deployments.v1.apps -o json
+
+  # List a single pod in JSON output format.
+  kubectl get -o json pod web-pod-13je7
+
+  # List a pod identified by type and name specified in "pod.yaml" in JSON output format.
+  kubectl get -f pod.yaml -o json
+
+  # Return only the phase value of the specified pod.
+  kubectl get -o template pod/web-pod-13je7 --template={{.status.phase}}
+
+  # List all replication controllers and services together in ps output format.
+  kubectl get rc,services
+
+  # List one or more resources by their type and names.
+  kubectl get rc/web service/frontend pods/web-pod-13je7
+
+Options:
+      --all-namespaces=false: If present, list the requested object(s) across all namespaces. Namespace in current context is ignored even if specified with --namespace.
+      --allow-missing-template-keys=true: If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.
+      --chunk-size=500: Return large lists in chunks rather than all at once. Pass 0 to disable. This flag is beta and may change in the future.
+      --export=false: If true, use 'export' for the resources.  Exported resources are stripped of cluster-specific information.
+      --field-selector='': Selector (field query) to filter on, supports '=', '==', and '!='.(e.g. --field-selector key1=value1,key2=value2). The server only supports a limited number of field queries per type.
+  -f, --filename=[]: Filename, directory, or URL to files identifying the resource to get from a server.
+      --ignore-not-found=false: If the requested object does not exist the command will return exit code 0.
+      --include-uninitialized=false: If true, the kubectl command applies to uninitialized objects. If explicitly set to false, this flag overrides other flags that make the kubectl commands apply to uninitialized objects, e.g., "--all". Objects with empty metadata.initializers are regarded as initialized.
+  -L, --label-columns=[]: Accepts a comma separated list of labels that are going to be presented as columns. Names are case-sensitive. You can also use multiple flag options like -L label1 -L label2...
+      --no-headers=false: When using the default or custom-column output format, don't print headers (default print headers).
+  -o, --output='': Output format. One of: json|yaml|wide|name|custom-columns=...|custom-columns-file=...|go-template=...|go-template-file=...|jsonpath=...|jsonpath-file=... See custom columns [http://kubernetes.io/docs/user-guide/kubectl-overview/#custom-columns], golang template [http://golang.org/pkg/text/template/#pkg-overview] and jsonpath template [http://kubernetes.io/docs/user-guide/jsonpath].
+      --raw='': Raw URI to request from the server.  Uses the transport specified by the kubeconfig file.
+  -R, --recursive=false: Process the directory used in -f, --filename recursively. Useful when you want to manage related manifests organized within the same directory.
+  -l, --selector='': Selector (label query) to filter on, supports '=', '==', and '!='.(e.g. -l key1=value1,key2=value2)
+      --server-print=true: If true, have the server return the appropriate table output. Supports extension APIs and CRDs.
+      --show-kind=false: If present, list the resource type for the requested object(s).
+      --show-labels=false: When printing, show all labels as the last column (default hide labels column)
+      --sort-by='': If non-empty, sort list types using this field specification.  The field specification is expressed as a JSONPath expression (e.g. '{.metadata.name}'). The field in the API resource specified by this JSONPath expression must be an integer or a string.
+      --template='': Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates [http://golang.org/pkg/text/template/#pkg-overview].
+  -w, --watch=false: After listing/getting the requested object, watch for changes. Uninitialized objects are excluded if no object name is provided.
+      --watch-only=false: Watch for changes to the requested object(s), without listing/getting first.
+
+Usage:
+  kubectl get [(-o|--output=)json|yaml|wide|custom-columns=...|custom-columns-file=...|go-template=...|go-template-file=...|jsonpath=...|jsonpath-file=...] (TYPE[.VERSION][.GROUP] [NAME | -l label] | TYPE[.VERSION][.GROUP]/NAME ...) [flags] [options]
+
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+
+unknown flag: --label
+bash-3.2$ kubectl get pods -label hello-visits2
+error: name cannot be provided when a selector is specified
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl get -l hello-visits2
+You must specify the type of resource to get. Use "kubectl api-resources" for a complete list of supported resources.
+
+error: Required resource not specified.
+Use "kubectl explain <resource>" for a detailed description of that resource (e.g. kubectl explain pods).
+See 'kubectl get -h' for help and examples.
+bash-3.2$ kubectl get pods -l run:hello-visits2
+Error from server (BadRequest): Unable to find {"" "v1" "pods"} that match label selector "run:hello-visits2", field selector "": unable to parse requirement: invalid label key "run:hello-visits2": name part must consist of alphanumeric characters, '-', '_' or '.', and must start and end with an alphanumeric character (e.g. 'MyName',  or 'my.name',  or '123-abc', regex used for validation is '([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]')
+bash-3.2$
+bash-3.2$ kubectl get pods -l hello-visits2
+No resources found.
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl get pods
+NAME                                       READY   STATUS    RESTARTS   AGE
+hello-visits2-controller-85bc55c8c-wkmxm   1/1     Running   0          1m
+bash-3.2$ kubectl describe pods/hello-visits2-controller-85bc55c8c-wkmxm
+Name:           hello-visits2-controller-85bc55c8c-wkmxm
+Namespace:      default
+Node:           minikube/172.16.2.132
+Start Time:     Mon, 05 Nov 2018 19:46:17 +0530
+Labels:         app=hello-visits2
+                pod-template-hash=416711747
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.5
+Controlled By:  ReplicaSet/hello-visits2-controller-85bc55c8c
+Containers:
+  hello-visits2:
+    Container ID:   docker://b4ec9a302ee2c6e43f45af8385389fa09eb89b8837942dc59835a4d2e33e2390
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 05 Nov 2018 19:46:18 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age        From               Message
+  ----    ------                 ----       ----               -------
+  Normal  Scheduled              <invalid>  default-scheduler  Successfully assigned hello-visits2-controller-85bc55c8c-wkmxm to minikube
+  Normal  SuccessfulMountVolume  <invalid>  kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 <invalid>  kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                <invalid>  kubelet, minikube  Created container
+  Normal  Started                <invalid>  kubelet, minikube  Started container
+bash-3.2$ kubectl get pods -l app:hello-visits2
+Error from server (BadRequest): Unable to find {"" "v1" "pods"} that match label selector "app:hello-visits2", field selector "": unable to parse requirement: invalid label key "app:hello-visits2": name part must consist of alphanumeric characters, '-', '_' or '.', and must start and end with an alphanumeric character (e.g. 'MyName',  or 'my.name',  or '123-abc', regex used for validation is '([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]')
+bash-3.2$ kubectl get pods -label app:hello-visits2
+error: name cannot be provided when a selector is specified
+bash-3.2$ kubectl get pods --label app:hello-visits2
+Error: unknown flag: --label
+
+
+Examples:
+  # List all pods in ps output format.
+  kubectl get pods
+
+  # List all pods in ps output format with more information (such as node name).
+  kubectl get pods -o wide
+
+  # List a single replication controller with specified NAME in ps output format.
+  kubectl get replicationcontroller web
+
+  # List deployments in JSON output format, in the "v1" version of the "apps" API group:
+  kubectl get deployments.v1.apps -o json
+
+  # List a single pod in JSON output format.
+  kubectl get -o json pod web-pod-13je7
+
+  # List a pod identified by type and name specified in "pod.yaml" in JSON output format.
+  kubectl get -f pod.yaml -o json
+
+  # Return only the phase value of the specified pod.
+  kubectl get -o template pod/web-pod-13je7 --template={{.status.phase}}
+
+  # List all replication controllers and services together in ps output format.
+  kubectl get rc,services
+
+  # List one or more resources by their type and names.
+  kubectl get rc/web service/frontend pods/web-pod-13je7
+
+Options:
+      --all-namespaces=false: If present, list the requested object(s) across all namespaces. Namespace in current context is ignored even if specified with --namespace.
+      --allow-missing-template-keys=true: If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.
+      --chunk-size=500: Return large lists in chunks rather than all at once. Pass 0 to disable. This flag is beta and may change in the future.
+      --export=false: If true, use 'export' for the resources.  Exported resources are stripped of cluster-specific information.
+      --field-selector='': Selector (field query) to filter on, supports '=', '==', and '!='.(e.g. --field-selector key1=value1,key2=value2). The server only supports a limited number of field queries per type.
+  -f, --filename=[]: Filename, directory, or URL to files identifying the resource to get from a server.
+      --ignore-not-found=false: If the requested object does not exist the command will return exit code 0.
+      --include-uninitialized=false: If true, the kubectl command applies to uninitialized objects. If explicitly set to false, this flag overrides other flags that make the kubectl commands apply to uninitialized objects, e.g., "--all". Objects with empty metadata.initializers are regarded as initialized.
+  -L, --label-columns=[]: Accepts a comma separated list of labels that are going to be presented as columns. Names are case-sensitive. You can also use multiple flag options like -L label1 -L label2...
+      --no-headers=false: When using the default or custom-column output format, don't print headers (default print headers).
+  -o, --output='': Output format. One of: json|yaml|wide|name|custom-columns=...|custom-columns-file=...|go-template=...|go-template-file=...|jsonpath=...|jsonpath-file=... See custom columns [http://kubernetes.io/docs/user-guide/kubectl-overview/#custom-columns], golang template [http://golang.org/pkg/text/template/#pkg-overview] and jsonpath template [http://kubernetes.io/docs/user-guide/jsonpath].
+      --raw='': Raw URI to request from the server.  Uses the transport specified by the kubeconfig file.
+  -R, --recursive=false: Process the directory used in -f, --filename recursively. Useful when you want to manage related manifests organized within the same directory.
+  -l, --selector='': Selector (label query) to filter on, supports '=', '==', and '!='.(e.g. -l key1=value1,key2=value2)
+      --server-print=true: If true, have the server return the appropriate table output. Supports extension APIs and CRDs.
+      --show-kind=false: If present, list the resource type for the requested object(s).
+      --show-labels=false: When printing, show all labels as the last column (default hide labels column)
+      --sort-by='': If non-empty, sort list types using this field specification.  The field specification is expressed as a JSONPath expression (e.g. '{.metadata.name}'). The field in the API resource specified by this JSONPath expression must be an integer or a string.
+      --template='': Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates [http://golang.org/pkg/text/template/#pkg-overview].
+  -w, --watch=false: After listing/getting the requested object, watch for changes. Uninitialized objects are excluded if no object name is provided.
+      --watch-only=false: Watch for changes to the requested object(s), without listing/getting first.
+
+Usage:
+  kubectl get [(-o|--output=)json|yaml|wide|custom-columns=...|custom-columns-file=...|go-template=...|go-template-file=...|jsonpath=...|jsonpath-file=...] (TYPE[.VERSION][.GROUP] [NAME | -l label] | TYPE[.VERSION][.GROUP]/NAME ...) [flags] [options]
+
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+
+unknown flag: --label
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl get pods
+NAME                                       READY   STATUS    RESTARTS   AGE
+hello-visits2-controller-85bc55c8c-wkmxm   1/1     Running   0          2m
+bash-3.2$ kubectl get pods -l app:hello-visits2
+Error from server (BadRequest): Unable to find {"" "v1" "pods"} that match label selector "app:hello-visits2", field selector "": unable to parse requirement: invalid label key "app:hello-visits2": name part must consist of alphanumeric characters, '-', '_' or '.', and must start and end with an alphanumeric character (e.g. 'MyName',  or 'my.name',  or '123-abc', regex used for validation is '([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]')
+bash-3.2$ kubectl describe pods/hello-visits2-controller-85bc55c8c-wkmxm
+Name:           hello-visits2-controller-85bc55c8c-wkmxm
+Namespace:      default
+Node:           minikube/172.16.2.132
+Start Time:     Mon, 05 Nov 2018 19:46:17 +0530
+Labels:         app=hello-visits2
+                pod-template-hash=416711747
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.5
+Controlled By:  ReplicaSet/hello-visits2-controller-85bc55c8c
+Containers:
+  hello-visits2:
+    Container ID:   docker://b4ec9a302ee2c6e43f45af8385389fa09eb89b8837942dc59835a4d2e33e2390
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 05 Nov 2018 19:46:18 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+kind: Service
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age        From               Message
+  ----    ------                 ----       ----               -------
+  Normal  Scheduled              <invalid>  default-scheduler  Successfully assigned hello-visits2-controller-85bc55c8c-wkmxm to minikube
+  Normal  SuccessfulMountVolume  <invalid>  kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 <invalid>  kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                <invalid>  kubelet, minikube  Created container
+  Normal  Started                <invalid>  kubelet, minikube  Started container
+bash-3.2$ kubectl get pods -l app=hello-visits2
+NAME                                       READY   STATUS    RESTARTS   AGE
+hello-visits2-controller-85bc55c8c-wkmxm   1/1     Running   0          2m
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl get deployment -l app=hello-visits2
+NAME                       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+hello-visits2-controller   1         1         1            1           2m
+bash-3.2$
+bash-3.2$
+bash-3.2$ ls
+deployment.yaml		pod-container.yaml	replica-controller.yaml	service.yaml
+bash-3.2$ vi service.yaml
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl create -f service.yaml
+service/hello-visit-service created
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl get services
+NAME                  TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+hello-visit-service   ClusterIP   10.104.32.64   <none>        80/TCP    5s
+kubernetes            ClusterIP   10.96.0.1      <none>        443/TCP   1h
+bash-3.2$ kubectl get services
+NAME                  TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+hello-visit-service   ClusterIP   10.104.32.64   <none>        80/TCP    7s
+kubernetes            ClusterIP   10.96.0.1      <none>        443/TCP   1h
+bash-3.2$ kubectl get services
+NAME                  TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+hello-visit-service   ClusterIP   10.104.32.64   <none>        80/TCP    13s
+kubernetes            ClusterIP   10.96.0.1      <none>        443/TCP   1h
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl get services
+NAME                  TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+hello-visit-service   ClusterIP   10.104.32.64   <none>        80/TCP    19s
+kubernetes            ClusterIP   10.96.0.1      <none>        443/TCP   1h
+bash-3.2$ kubectl describe services
+Name:              hello-visit-service
+Namespace:         default
+Labels:            <none>
+Annotations:       <none>
+Selector:          app=hello-visits2
+Type:              ClusterIP
+IP:                10.104.32.64
+Port:              <unset>  80/TCP
+TargetPort:        8080/TCP
+kind: Service
+Endpoints:         172.17.0.5:8080
+Session Affinity:  None
+Events:            <none>
+
+
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP:                10.96.0.1
+Port:              https  443/TCP
+TargetPort:        8443/TCP
+Endpoints:         172.16.2.132:8443
+Session Affinity:  ClientIP
+Events:            <none>
+bash-3.2$ curl $(minikube ip):8080
+curl: (7) Failed to connect to 172.16.2.132 port 8080: Connection refused
+bash-3.2$ curl $(minikube ip):80
+curl: (7) Failed to connect to 172.16.2.132 port 80: Connection refused
+bash-3.2$ curl $(minikube ip):8080
+curl: (7) Failed to connect to 172.16.2.132 port 8080: Connection refused
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl get services
+NAME                  TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+hello-visit-service   ClusterIP   10.104.32.64   <none>        80/TCP    1m
+kubernetes            ClusterIP   10.96.0.1      <none>        443/TCP   1h
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl delete service/hello-visit-service
+service "hello-visit-service" deleted
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ vi service.yaml
+bash-3.2$
+kind: Service
+bash-3.2$ kubectl create -f service.yaml
+service/hello-visit-service created
+bash-3.2$ kubectl get services
+NAME                  TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+hello-visit-service   ClusterIP   10.96.152.65   <none>        80/TCP    3s
+kubernetes            ClusterIP   10.96.0.1      <none>        443/TCP   1h
+kind: Service
+bash-3.2$ kubectl get services
+NAME                  TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+hello-visit-service   ClusterIP   10.96.152.65   <none>        80/TCP    5s
+kubernetes            ClusterIP   10.96.0.1      <none>        443/TCP   1h
+bash-3.2$ kubectl get services
+NAME                  TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+hello-visit-service   ClusterIP   10.96.152.65   <none>        80/TCP    6s
+kubernetes            ClusterIP   10.96.0.1      <none>        443/TCP   1h
+bash-3.2$ kubectl get services
+NAME                  TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+hello-visit-service   ClusterIP   10.96.152.65   <none>        80/TCP    7s
+kubernetes            ClusterIP   10.96.0.1      <none>        443/TCP   1h
+bash-3.2$ kubectl get services
+NAME                  TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+hello-visit-service   ClusterIP   10.96.152.65   <none>        80/TCP    12s
+kubernetes            ClusterIP   10.96.0.1      <none>        443/TCP   1h
+bash-3.2$ !v
+vi service.yaml
+bash-3.2$
+bash-3.2$ !v
+vi service.yaml
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl delete service/hello-visit-service
+service "hello-visit-service" deleted
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ ls
+deployment.yaml		pod-container.yaml	replica-controller.yaml	service.yaml
+bash-3.2$ !v
+vi service.yaml
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ !v
+vi service.yaml
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl create -f service.yaml
+service/hello-visit-service created
+bash-3.2$ kubectl get services
+NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+hello-visit-service   NodePort    10.109.148.55   <none>        80:30354/TCP   6s
+kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP        1h
+bash-3.2$ kubectl get services
+NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+hello-visit-service   NodePort    10.109.148.55   <none>        80:30354/TCP   7s
+kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP        1h
+bash-3.2$ curl $(minikube ip):30354
+curl: (7) Failed to connect to 172.16.2.132 port 30354: Connection refused
+bash-3.2$ curl $(minikube ip):30354
+curl: (7) Failed to connect to 172.16.2.132 port 30354: Connection refused
+bash-3.2$ kubectl describe services
+Name:                     hello-visit-service
+Namespace:                default
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=hello-visits2
+Type:                     NodePort
+IP:                       10.109.148.55
+Port:                     <unset>  80/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  30354/TCP
+Endpoints:                172.17.0.5:8080
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+
+
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP:                10.96.0.1
+Port:              https  443/TCP
+TargetPort:        8443/TCP
+Endpoints:         172.16.2.132:8443
+Session Affinity:  ClientIP
+Events:            <none>
+bash-3.2$ curl http://172.17.0.5:8080
+curl: (7) Failed to connect to 172.17.0.5 port 8080: Operation timed out
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl get pods
+NAME                                       READY   STATUS    RESTARTS   AGE
+hello-visits2-controller-85bc55c8c-wkmxm   1/1     Running   0          13m
+bash-3.2$ kubectl describe pods/hello-visits2-controller-85bc55c8c-wkmxm
+\Name:           hello-visits2-controller-85bc55c8c-wkmxm
+Namespace:      default
+Node:           minikube/172.16.2.132
+Start Time:     Mon, 05 Nov 2018 19:46:17 +0530
+Labels:         app=hello-visits2
+                pod-template-hash=416711747
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.5
+Controlled By:  ReplicaSet/hello-visits2-controller-85bc55c8c
+Containers:
+  hello-visits2:
+    Container ID:   docker://b4ec9a302ee2c6e43f45af8385389fa09eb89b8837942dc59835a4d2e33e2390
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 05 Nov 2018 19:46:18 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age        From               Message
+  ----    ------                 ----       ----               -------
+  Normal  Scheduled              <invalid>  default-scheduler  Successfully assigned hello-visits2-controller-85bc55c8c-wkmxm to minikube
+  Normal  SuccessfulMountVolume  <invalid>  kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 <invalid>  kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                <invalid>  kubelet, minikube  Created container
+  Normal  Started                <invalid>  kubelet, minikube  Started container
+bash-3.2$ kubectl get services
+NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+hello-visit-service   NodePort    10.109.148.55   <none>        80:30354/TCP   3m
+kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP        2h
+bash-3.2$ kubectl delete services/hello-visit-service
+service "hello-visit-service" deleted
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl get deployments
+NAME                       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+hello-visits2-controller   1         1         1            1           14m
+bash-3.2$ kubectl delete deployments/hello-visits2-controller
+deployment.extensions "hello-visits2-controller" deleted
+bash-3.2$ kubectl get pods
+NAME                                       READY   STATUS        RESTARTS   AGE
+hello-visits2-controller-85bc55c8c-wkmxm   1/1     Terminating   0          14m
+bash-3.2$ history | grep meen
+  294  kubectl create hello-visits --image=meencloud/hello-visits:v2
+  295  kubectl run  hello-visits --image=meencloud/hello-visits:v2
+  342  kubectl run  hello-visits --image=meencloud/hello-visits:v5
+  343  kubectl run  hello-visits1 --image=meencloud/hello-visits:v5
+  370  kubectl run  hello-visits1 --image=meencloud/hello-visits:v5
+  502  history | grep meen
+bash-3.2$ !342
+kubectl run  hello-visits --image=meencloud/hello-visits:v5
+kubectl run --generator=deployment/apps.v1beta1 is DEPRECATED and will be removed in a future version. Use kubectl create instead.
+deployment.apps/hello-visits created
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ kuebctl get deployments
+bash: kuebctl: command not found
+bash-3.2$ kubectl get deployments
+NAME           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+hello-visits   1         1         1            1           19s
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl expose deployment/hello-visits type="NodePort" --port 8080
+error: there is no need to specify a resource type as a separate argument when passing arguments in resource/name form (e.g. 'kubectl get resource/<resource_name>' instead of 'kubectl get resource resource/<resource_name>'
+See 'kubectl expose -h' for help and examples.
+bash-3.2$ kubectl expose deployment/hello-visits --type="NodePort" --port 8080
+kind: Service
+service/hello-visits exposed
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl get services
+NAME           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+hello-visits   NodePort    10.106.228.86   <none>        8080:32317/TCP   6s
+kubernetes     ClusterIP   10.96.0.1       <none>        443/TCP          2h
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ curl $(minikube ip):32317
+curl: (7) Failed to connect to 172.16.2.132 port 32317: Connection refused
+bash-3.2$ curl $(minikube ip):32317
+curl: (7) Failed to connect to 172.16.2.132 port 32317: Connection refused
+bash-3.2$ kubectl expose deployment/hello-visits --type="NodePort" --port 80
+Error from server (AlreadyExists): services "hello-visits" already exists
+bash-3.2$ kubectl delete services/hello-visits
+service "hello-visits" deleted
+bash-3.2$ kubectl expose deployment/hello-visits --type="NodePort" --port 80
+service/hello-visits exposed
+bash-3.2$ curl $(minikube ip):32317
+ç^[curl: (7) Failed to connect to 172.16.2.132 port 32317: Connection refused
+bash-3.2$ kubectl get services
+NAME           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+hello-visits   NodePort    10.100.86.166   <none>        80:32537/TCP   12s
+kubernetes     ClusterIP   10.96.0.1       <none>        443/TCP        2h
+bash-3.2$ curl $(minikube ip):32537
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-85df5c5cc4-kkd96<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Random Number :</b> 72766bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ ls
+deployment.yaml		pod-container.yaml	replica-controller.yaml	service.yaml
+bash-3.2$ vi service.yaml
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl delete services/hello-visits
+service "hello-visits" deleted
+bash-3.2$ kubectl get services
+kind: Service
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   2h
+bash-3.2$ history | grep dreate
+  521  history | grep dreate
+bash-3.2$ history | grep create
+  294  kubectl create hello-visits --image=meencloud/hello-visits:v2
+  395  kubectl create -f pod-container.yaml
+  397  kubectl create -f pod-container.yaml
+  403  kubectl create -f pod-container.yaml
+  417  kubectl create -f deployment.yaml
+  418  kubectl create pods
+  430  kuebctl create -f deployment.yaml
+  431  kubectl create -f deployment.yaml
+  445  kuebctl create -f deployment.yaml
+  446  kubectl create -f deployment.yaml
+  464  kubectl create -f service.yaml
+  476  kubectl create -f service.yaml
+  488  kubectl create -f service.yaml
+  522  history | grep create
+bash-3.2$ !488
+kubectl create -f service.yaml
+service/hello-visit-service created
+bash-3.2$ kubectl get services
+NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+hello-visit-service   NodePort    10.110.14.100   <none>        80:31971/TCP   3s
+kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP        2h
+bash-3.2$ curl $(minikube ip):31971
+curl: (7) Failed to connect to 172.16.2.132 port 31971: Connection refused
+bash-3.2$
+bash-3.2$
+bash-3.2$ curl $(minikube ip):31971
+curl: (7) Failed to connect to 172.16.2.132 port 31971: Connection refused
+bash-3.2$ curl $(minikube ip):31971
+curl: (7) Failed to connect to 172.16.2.132 port 31971: Connection refused
+bash-3.2$
+bash-3.2$
+bash-3.2$ !v
+vi service.yaml
+bash-3.2$
+bash-3.2$ kubectl delete services/hello-visits
+Error from server (NotFound): services "hello-visits" not found
+bash-3.2$ kubectl delete services/hello-visit-service
+service "hello-visit-service" deleted
+bash-3.2$ kubectl create -f service.yaml
+service/hello-visit-service created
+bash-3.2$ kubectl get services
+NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+hello-visit-service   NodePort    10.104.58.144   <none>        80:30257/TCP   6s
+kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP        2h
+bash-3.2$ curl $(minikube ip):30257
+curl: (7) Failed to connect to 172.16.2.132 port 30257: Connection refused
+bash-3.2$ curl $(minikube ip):30257
+curl: (7) Failed to connect to 172.16.2.132 port 30257: Connection refused
+bash-3.2$ curl $(minikube ip):30257
+curl: (7) Failed to connect to 172.16.2.132 port 30257: Connection refused
+bash-3.2$ kubectl get service
+NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+hello-visit-service   NodePort    10.104.58.144   <none>        80:30257/TCP   35s
+kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP        2h
+bash-3.2$ kubectl describe service
+Name:                     hello-visit-service
+Namespace:                default
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=hello-visits2
+Type:                     NodePort
+IP:                       10.104.58.144
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+NodePort:                 <unset>  30257/TCP
+Endpoints:                <none>
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+
+
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP:                10.96.0.1
+Port:              https  443/TCP
+TargetPort:        8443/TCP
+Endpoints:         172.16.2.132:8443
+Session Affinity:  ClientIP
+Events:            <none>
+bash-3.2$ kubectl delete services/hello-visit-service
+service "hello-visit-service" deleted
+bash-3.2$ kubectl expose deployment/hello-visits --type="NodePort" --port 80
+service/hello-visits exposed
+bash-3.2$ kubectl get service
+NAME           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+hello-visits   NodePort    10.101.26.180   <none>        80:32562/TCP   2s
+kind: Service
+kubernetes     ClusterIP   10.96.0.1       <none>        443/TCP        2h
+bash-3.2$ curl $(minikube ip):32562
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-85df5c5cc4-kkd96<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Random Number :</kubectl describe service
+Name:                     hello-visits
+Namespace:                default
+Labels:                   run=hello-visits
+Annotations:              <none>
+Selector:                 run=hello-visits
+Type:                     NodePort
+IP:                       10.101.26.180
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+NodePort:                 <unset>  32562/TCP
+Endpoints:                172.17.0.6:80
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+
+
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP:                10.96.0.1
+Port:              https  443/TCP
+TargetPort:        8443/TCP
+Endpoints:         172.16.2.132:8443
+Session Affinity:  ClientIP
+Events:            <none>
+bash-3.2$
+bash-3.2$
+bash-3.2$ ls
+deployment.yaml		pod-container.yaml	replica-controller.yaml	service.yaml
+bash-3.2$ vi service.yaml
+bash-3.2$
+bash-3.2$ kubectl delete services/hello-visits
+service "hello-visits" deleted
+bash-3.2$ kubectl create -f service.yaml
+service/hello-visit-service created
+bash-3.2$ kubectl get service
+NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+hello-visit-service   NodePort    10.110.234.76   <none>        80:30039/TCP   5s
+kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP        2h
+bash-3.2$ curl $(minikube ip):30039
+curl: (7) Failed to connect to 172.16.2.132 port 30039: Connection refused
+bash-3.2$ curl $(minikube ip):30039
+curl: (7) Failed to connect to 172.16.2.132 port 30039: Connection refused
+bash-3.2$ kubectl describe service
+Name:                     hello-visit-service
+Namespace:                default
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=hello-visits
+Type:                     NodePort
+IP:                       10.110.234.76
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+NodePort:                 <unset>  30039/TCP
+Endpoints:                <none>
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+
+
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP:                10.96.0.1
+Port:              https  443/TCP
+TargetPort:        8443/TCP
+Endpoints:         172.16.2.132:8443
+Session Affinity:  ClientIP
+Events:            <none>
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl describe deployment
+Name:                   hello-visits
+Namespace:              default
+CreationTimestamp:      Mon, 05 Nov 2018 20:01:23 +0530
+Labels:                 run=hello-visits
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               run=hello-visits
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  run=hello-visits
+  Containers:
+   hello-visits:
+    Image:        meencloud/hello-visits:v5
+    Port:         <none>
+    Host Port:    <none>
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   hello-visits-85df5c5cc4 (1/1 replicas created)
+Events:
+  Type    Reason             Age        From                   Message
+  ----    ------             ----       ----                   -------
+  Normal  ScalingReplicaSet  <invalid>  deployment-controller  Scaled up replica set hello-visits-85df5c5cc4 to 1
+bash-3.2$ kubectl describe pods
+Name:           hello-visits-85df5c5cc4-kkd96
+Namespace:      default
+Node:           minikube/172.16.2.132
+Start Time:     Mon, 05 Nov 2018 20:01:23 +0530
+Labels:         pod-template-hash=4189171770
+                run=hello-visits
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.6
+Controlled By:  ReplicaSet/hello-visits-85df5c5cc4
+Containers:
+  hello-visits:
+    Container ID:   docker://9cf2e45c17a395ca63306208a94937aee832d910ddd0e47872a53de5343c098c
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Mon, 05 Nov 2018 20:01:24 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+apiVersion: extensions/v1beta1
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age        From               Message
+  ----    ------                 ----       ----               -------
+  Normal  Scheduled              <invalid>  default-scheduler  Successfully assigned hello-visits-85df5c5cc4-kkd96 to minikube
+  Normal  SuccessfulMountVolume  <invalid>  kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 <invalid>  kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                <invalid>  kubelet, minikube  Created container
+  Normal  Started                <invalid>  kubelet, minikube  Started container
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl delete services/hello-visits
+Error from server (NotFound): services "hello-visits" not found
+bash-3.2$ kubectl delete services/hello-visits-controller
+Error from server (NotFound): services "hello-visits-controller" not found
+bash-3.2$ kubectl get services
+NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+hello-visit-service   NodePort    10.110.234.76   <none>        80:30039/TCP   1m
+kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP        2h
+bash-3.2$ kubectl delete services/hello-visits-service
+Error from server (NotFound): services "hello-visits-service" not found
+bash-3.2$ kubectl delete services/hello-visit-service
+service "hello-visit-service" deleted
+bash-3.2$ ls
+deployment.yaml		pod-container.yaml	replica-controller.yaml	service.yaml
+bash-3.2$ vi deployment.yaml
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl get deployments
+NAME           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+hello-visits   1         1         1            1           9m
+bash-3.2$ kubectl service deployments/hello-visits
+Error: unknown command "service" for "kubectl"
+Run 'kubectl --help' for usage.
+unknown command "service" for "kubectl"
+bash-3.2$ kubectl delete deployments/hello-visits
+deployment.extensions "hello-visits" deleted
+bash-3.2$ kubectl get services
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   2h
+bash-3.2$ kubectl get pods
+NAME                            READY   STATUS        RESTARTS   AGE
+hello-visits-85df5c5cc4-kkd96   1/1     Terminating   0          10m
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ ls
+deployment.yaml		pod-container.yaml	replica-controller.yaml	service.yaml
+bash-3.2$ kubectl create -f deployment.yaml
+deployment.extensions/hello-visits-controller created
+bash-3.2$ kubectl describe deployment.yaml
+error: the server doesn't have a resource type "deployment"
+bash-3.2$ kubectl describe deployment
+Name:                   hello-visits-controller
+Namespace:              default
+CreationTimestamp:      Mon, 05 Nov 2018 20:11:56 +0530
+Labels:                 app=hello-visits
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=hello-visits
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  1 max unavailable, 1 max surge
+Pod Template:
+  Labels:  app=hello-visits
+  Containers:
+   hello-visits:
+    Image:        meencloud/hello-visits:v5
+    Port:         80/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   hello-visits-controller-74bc7c9545 (1/1 replicas created)
+Events:
+  Type    Reason             Age        From                   Message
+  ----    ------             ----       ----                   -------
+  Normal  ScalingReplicaSet  <invalid>  deployment-controller  Scaled up replica set hello-visits-controller-74bc7c9545 to 1
+bash-3.2$ kubectl describe pods
+Name:           hello-visits-controller-74bc7c9545-hcmf7
+Namespace:      default
+Node:           minikube/172.16.2.132
+Start Time:     Mon, 05 Nov 2018 20:11:56 +0530
+Labels:         app=hello-visits
+                pod-template-hash=3067375101
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.5
+Controlled By:  ReplicaSet/hello-visits-controller-74bc7c9545
+Containers:
+  hello-visits:
+    Container ID:   docker://a6112de2288b15cdd103f01b426b64e2d4f1d48b0f8acc97bfda743907e8cef7
+kind: Service
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 05 Nov 2018 20:11:57 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age        From               Message
+  ----    ------                 ----       ----               -------
+  Normal  Scheduled              <invalid>  default-scheduler  Successfully assigned hello-visits-controller-74bc7c9545-hcmf7 to minikube
+  Normal  SuccessfulMountVolume  <invalid>  kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 <invalid>  kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                <invalid>  kubelet, minikube  Created container
+  Normal  Started                <invalid>  kubelet, minikube  Started container
+bash-3.2$
+bash-3.2$
+bash-3.2$ ls
+deployment.yaml		pod-container.yaml	replica-controller.yaml	service.yaml
+bash-3.2$ vi service.yaml
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl create -f service.yaml
+service/hello-visit-service created
+bash-3.2$ kubectl get services
+NAME                  TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
+hello-visit-service   NodePort    10.98.59.66   <none>        80:30381/TCP   5s
+kubernetes            ClusterIP   10.96.0.1     <none>        443/TCP        2h
+bash-3.2$
+bash-3.2$
+bash-3.2$ curl $(minikube ip):30381
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-controller-74bc7c9545-hcmf7<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Random Number :</b> 7397bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ pwd
+/Users/seveluch/Documents/DEVOPS/kubernetes/yaml
+bash-3.2$ ls
+deployment.yaml		pod-container.yaml	replica-controller.yaml	service.yaml
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ pwd
+/Users/seveluch/Documents/DEVOPS/kubernetes/yaml
+bash-3.2$

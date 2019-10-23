@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-visits2
+spec:
+  containers:
+  - name: hello-visits2
+    image: meencloud/hello-visits:v5
+    ports:
+    - containerPort: 80

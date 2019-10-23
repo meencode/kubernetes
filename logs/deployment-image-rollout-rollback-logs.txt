@@ -1,0 +1,698 @@
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP:                10.96.0.1
+Port:              https  443/TCP
+TargetPort:        8443/TCP
+Endpoints:         172.16.2.129:8443
+Session Affinity:  ClientIP
+Events:            <none>
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl delete svc/hello-visits
+service "hello-visits" deleted
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl describe services
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP:                10.96.0.1
+Port:              https  443/TCP
+TargetPort:        8443/TCP
+Endpoints:         172.16.2.129:8443
+Session Affinity:  ClientIP
+Events:            <none>
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl create -f service.yaml
+service/hello-visits created
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl describe services
+Name:                     hello-visits
+Namespace:                default
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=hello-visits
+Type:                     NodePort
+IP:                       10.110.146.2
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+NodePort:                 <unset>  30080/TCP
+Endpoints:                172.17.0.6:80
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+
+
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP:                10.96.0.1
+Port:              https  443/TCP
+TargetPort:        8443/TCP
+Endpoints:         172.16.2.129:8443
+Session Affinity:  ClientIP
+Events:            <none>
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl describe services
+Name:                     hello-visits
+Namespace:                default
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=hello-visits
+Type:                     NodePort
+IP:                       10.110.146.2
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+NodePort:                 <unset>  30080/TCP
+Endpoints:                172.17.0.6:80
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+
+
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP:                10.96.0.1
+Port:              https  443/TCP
+TargetPort:        8443/TCP
+Endpoints:         172.16.2.129:8443
+Session Affinity:  ClientIP
+Events:            <none>
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl describe deployments
+Name:                   hello-visits
+apiVersion: extensions/v1beta1
+Namespace:              default
+CreationTimestamp:      Wed, 07 Nov 2018 12:23:17 +0530
+Labels:                 app=hello-visits
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=hello-visits
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  1 max unavailable, 1 max surge
+Pod Template:
+  Labels:  app=hello-visits
+  Containers:
+   hello-visits:
+    Image:        meencloud/hello-visits
+    Port:         80/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   hello-visits-7bcdcdf454 (1/1 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  24m   deployment-controller  Scaled up replica set hello-visits-7bcdcdf454 to 1
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                            READY   STATUS    RESTARTS   AGE
+hello-visits-7bcdcdf454-ldgml   1/1     Running   0          24m
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ ls
+deployment.yaml		pod-container.yaml	replica-controller.yaml	service.yaml		service1.yaml
+SEVELUCH-M-R0YB:yaml seveluch$ vi deployment.yaml
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl scale --current-replicas=2 --replicas=3 deployment/hello-visits
+error: Expected replicas to be 2, was 1
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl scale --current-replicas=1 --replicas=3 deployment/hello-visits
+deployment.extensions/hello-visits scaled
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                            READY   STATUS              RESTARTS   AGE
+hello-visits-7bcdcdf454-ff6jf   0/1     ContainerCreating   0          5s
+hello-visits-7bcdcdf454-k547x   0/1     ContainerCreating   0          5s
+hello-visits-7bcdcdf454-ldgml   1/1     Running             0          28m
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                            READY   STATUS    RESTARTS   AGE
+hello-visits-7bcdcdf454-ff6jf   1/1     Running   0          33s
+hello-visits-7bcdcdf454-k547x   1/1     Running   0          33s
+hello-visits-7bcdcdf454-ldgml   1/1     Running   0          28m
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+\NAME                            READY   STATUS    RESTARTS   AGE
+hello-visits-7bcdcdf454-ff6jf   1/1     Running   0          34s
+hello-visits-7bcdcdf454-k547x   1/1     Running   0          34s
+hello-visits-7bcdcdf454-ldgml   1/1     Running   0          28m
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl describe services/hello-visits
+Name:                     hello-visits
+Namespace:                default
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=hello-visits
+Type:                     NodePort
+IP:                       10.110.146.2
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+NodePort:                 <unset>  30080/TCP
+Endpoints:                172.17.0.5:80,172.17.0.6:80,172.17.0.7:80
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl describe services/hello-visits
+Name:                     hello-visits
+Namespace:                default
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=hello-visits
+Type:                     NodePort
+IP:                       10.110.146.2
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+NodePort:                 <unset>  30080/TCP
+Endpoints:                172.17.0.5:80,172.17.0.6:80,172.17.0.7:80
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+SEVELUCH-M-R0YB:yaml seveluch$ !cur
+curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-ldgml<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 772133SEVELUCH-M-R0YB:yaml seveluch$ curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-k547x<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 450746SEVELUCH-M-R0YB:yaml seveluch$ curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-ldgml<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 178495SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-ff6jf<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 93465SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+Display all 1462 possibilities? (y or n)
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get deployments
+NAME           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+hello-visits   3         3         3            3           30m
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get rs
+NAME                      DESIRED   CURRENT   READY   AGE
+hello-visits-7bcdcdf454   3         3         3       30m
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get rc
+No resources found.
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                            READY   STATUS    RESTARTS   AGE
+hello-visits-7bcdcdf454-ff6jf   1/1     Running   0          2m
+hello-visits-7bcdcdf454-k547x   1/1     Running   0          2m
+hello-visits-7bcdcdf454-ldgml   1/1     Running   0          30m
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods --show-labels
+NAME                            READY   STATUS    RESTARTS   AGE   LABELS
+hello-visits-7bcdcdf454-ff6jf   1/1     Running   0          2m    app=hello-visits,pod-template-hash=3678789010
+hello-visits-7bcdcdf454-k547x   1/1     Running   0          2m    app=hello-visits,pod-template-hash=3678789010
+hello-visits-7bcdcdf454-ldgml   1/1     Running   0          30m   app=hello-visits,pod-template-hash=3678789010
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get rs --show-labels
+NAME                      DESIRED   CURRENT   READY   AGE   LABELS
+hello-visits-7bcdcdf454   3         3         3       31m   app=hello-visits,pod-template-hash=3678789010
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get svc --show-labels
+NAME           TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE   LABELS
+hello-visits   NodePort    10.110.146.2   <none>        80:30080/TCP   30m   <none>
+kubernetes     ClusterIP   10.96.0.1      <none>        443/TCP        1d    component=apiserver,provider=kubernetes
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get deployment --show-labels
+NAME           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE   LABELS
+hello-visits   3         3         3            3           31m   app=hello-visits
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout status deployment/hello-visits
+deployment "hello-visits" successfully rolled out
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get rs
+NAME                      DESIRED   CURRENT   READY   AGE
+hello-visits-7bcdcdf454   3         3         3       37m
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl exec -it hello-visits-7bcdcdf454-ff6jf bash
+root@hello-visits-7bcdcdf454-ff6jf:/app# ls
+Dockerfile  app.py  requirements.txt
+root@hello-visits-7bcdcdf454-ff6jf:/app# ifconfig
+bash: ifconfig: command not found
+root@hello-visits-7bcdcdf454-ff6jf:/app# exit
+exit
+command terminated with exit code 127
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ !cur
+curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-ldgml<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 135288SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ !c
+curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-ldgml<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 377160SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ !c
+curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-ldgml<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 982062SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ !c
+curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-ff6jf<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 168013SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ !c
+curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-ldgml<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 413470SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl set iamge deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record
+Error: unknown flag: --record
+
+
+Available Commands:
+  env            Update environment variables on a pod template
+  image          Update image of a pod template
+  resources      Update resource requests/limits on objects with pod templates
+  selector       Set the selector on a resource
+  serviceaccount Update ServiceAccount of a resource
+  subject        Update User, Group or ServiceAccount in a RoleBinding/ClusterRoleBinding
+
+Usage:
+  kubectl set SUBCOMMAND [options]
+
+Use "kubectl <command> --help" for more information about a given command.
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+
+unknown flag: --record
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record
+deployment.extensions/hello-visits image updated
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout status deployment/hello-visits
+Waiting for deployment "hello-visits" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "hello-visits" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "hello-visits" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "hello-visits" rollout to finish: 2 of 3 updated replicas are available...
+deployment "hello-visits" successfully rolled out
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                            READY   STATUS        RESTARTS   AGE
+hello-visits-7bcdcdf454-ff6jf   1/1     Terminating   0          13m
+hello-visits-7bcdcdf454-k547x   1/1     Terminating   0          13m
+hello-visits-7bcdcdf454-ldgml   1/1     Terminating   0          41m
+hello-visits-7fd877d77d-f68tq   1/1     Running       0          17s
+hello-visits-7fd877d77d-nrx67   1/1     Running       0          24s
+hello-visits-7fd877d77d-zlqfp   1/1     Running       0          24s
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get deployment
+NAME           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+hello-visits   3         3         3            3           41m
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get svc
+NAME           TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
+hello-visits   NodePort    10.110.146.2   <none>        80:30080/TCP   40m
+kubernetes     ClusterIP   10.96.0.1      <none>        443/TCP        1d
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout history deployment/hello-visits
+deployment.extensions/hello-visits
+REVISION  CHANGE-CAUSE
+1         <none>
+2         kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl describe svc
+Name:                     hello-visits
+Namespace:                default
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=hello-visits
+Type:                     NodePort
+IP:                       10.110.146.2
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+NodePort:                 <unset>  30080/TCP
+Endpoints:                172.17.0.10:80,172.17.0.8:80,172.17.0.9:80
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+
+
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP:                10.96.0.1
+Port:              https  443/TCP
+TargetPort:        8443/TCP
+Endpoints:         172.16.2.129:8443
+Session Affinity:  ClientIP
+Events:            <none>
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl describe deployment/hello-visits
+Name:                   hello-visits
+Namespace:              default
+CreationTimestamp:      Wed, 07 Nov 2018 12:23:17 +0530
+Labels:                 app=hello-visits
+Annotations:            deployment.kubernetes.io/revision: 2
+                        kubernetes.io/change-cause: kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+Selector:               app=hello-visits
+Replicas:               3 desired | 3 updated | 3 total | 3 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  1 max unavailable, 1 max surge
+Pod Template:
+  Labels:  app=hello-visits
+  Containers:
+   hello-visits:
+    Image:        meencloud/hello-visits:v6
+    Port:         80/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   hello-visits-7fd877d77d (3/3 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  42m   deployment-controller  Scaled up replica set hello-visits-7bcdcdf454 to 1
+  Normal  ScalingReplicaSet  14m   deployment-controller  Scaled up replica set hello-visits-7bcdcdf454 to 3
+  Normal  ScalingReplicaSet  78s   deployment-controller  Scaled up replica set hello-visits-7fd877d77d to 1
+  Normal  ScalingReplicaSet  78s   deployment-controller  Scaled down replica set hello-visits-7bcdcdf454 to 2
+  Normal  ScalingReplicaSet  78s   deployment-controller  Scaled up replica set hello-visits-7fd877d77d to 2
+  Normal  ScalingReplicaSet  71s   deployment-controller  Scaled down replica set hello-visits-7bcdcdf454 to 1
+  Normal  ScalingReplicaSet  71s   deployment-controller  Scaled up replica set hello-visits-7fd877d77d to 3
+  Normal  ScalingReplicaSet  66s   deployment-controller  Scaled down replica set hello-visits-7bcdcdf454 to 0
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl describe rs/hello-visits
+Error from server (NotFound): replicasets.extensions "hello-visits" not found
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl describe rs
+Name:           hello-visits-7bcdcdf454
+Namespace:      default
+Selector:       app=hello-visits,pod-template-hash=3678789010
+Labels:         app=hello-visits
+                pod-template-hash=3678789010
+Annotations:    deployment.kubernetes.io/desired-replicas: 3
+                deployment.kubernetes.io/max-replicas: 4
+                deployment.kubernetes.io/revision: 1
+Controlled By:  Deployment/hello-visits
+Replicas:       0 current / 0 desired
+Pods Status:    0 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:  app=hello-visits
+           pod-template-hash=3678789010
+  Containers:
+   hello-visits:
+    Image:        meencloud/hello-visits
+    Port:         80/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Events:
+  Type    Reason            Age   From                   Message
+  ----    ------            ----  ----                   -------
+  Normal  SuccessfulCreate  42m   replicaset-controller  Created pod: hello-visits-7bcdcdf454-ldgml
+  Normal  SuccessfulCreate  14m   replicaset-controller  Created pod: hello-visits-7bcdcdf454-k547x
+  Normal  SuccessfulCreate  14m   replicaset-controller  Created pod: hello-visits-7bcdcdf454-ff6jf
+  Normal  SuccessfulDelete  92s   replicaset-controller  Deleted pod: hello-visits-7bcdcdf454-ff6jf
+  Normal  SuccessfulDelete  85s   replicaset-controller  Deleted pod: hello-visits-7bcdcdf454-k547x
+  Normal  SuccessfulDelete  80s   replicaset-controller  Deleted pod: hello-visits-7bcdcdf454-ldgml
+
+
+Name:           hello-visits-7fd877d77d
+Namespace:      default
+Selector:       app=hello-visits,pod-template-hash=3984338338
+Labels:         app=hello-visits
+                pod-template-hash=3984338338
+Annotations:    deployment.kubernetes.io/desired-replicas: 3
+                deployment.kubernetes.io/max-replicas: 4
+                deployment.kubernetes.io/revision: 2
+                kubernetes.io/change-cause: kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+Controlled By:  Deployment/hello-visits
+Replicas:       3 current / 3 desired
+Pods Status:    3 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:  app=hello-visits
+           pod-template-hash=3984338338
+  Containers:
+   hello-visits:
+    Image:        meencloud/hello-visits:v6
+    Port:         80/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Events:
+  Type    Reason            Age   From                   Message
+  ----    ------            ----  ----                   -------
+  Normal  SuccessfulCreate  92s   replicaset-controller  Created pod: hello-visits-7fd877d77d-nrx67
+  Normal  SuccessfulCreate  92s   replicaset-controller  Created pod: hello-visits-7fd877d77d-zlqfp
+  Normal  SuccessfulCreate  85s   replicaset-controller  Created pod: hello-visits-7fd877d77d-f68tq
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ !c
+curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7fd877d77d-f68tq<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> v6<br/><b>Random Number :</b> 445239SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ !c
+curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7fd877d77d-zlqfp<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> v6<br/><b>Random Number :</b> 201584SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ !c
+curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7fd877d77d-zlqfp<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> v6<br/><b>Random Number :</b> 959044SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout history deployment/hello-visits
+deployment.extensions/hello-visits
+REVISION  CHANGE-CAUSE
+1         <none>
+2         kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout undo deployment/hello-visits
+deployment.extensions/hello-visits
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout history deployment/hello-visits
+deployment.extensions/hello-visits
+REVISION  CHANGE-CAUSE
+2         kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+3         <none>
+
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout history deployment/hello-visits
+deployment.extensions/hello-visits
+REVISION  CHANGE-CAUSE
+2         kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+3         <none>
+
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                            READY   STATUS              RESTARTS   AGE
+hello-visits-7bcdcdf454-lnc9b   1/1     Running             0          16s
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+hello-visits-7bcdcdf454-n65sh   1/1     Running             0          16s
+hello-visits-7bcdcdf454-pcpwx   0/1     ContainerCreating   0          9s
+hello-visits-7fd877d77d-f68tq   1/1     Terminating         0          4m
+hello-visits-7fd877d77d-nrx67   1/1     Terminating         0          4m
+hello-visits-7fd877d77d-zlqfp   1/1     Terminating         0          4m
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout status deployment/hello-visits
+deployment "hello-visits" successfully rolled out
+SEVELUCH-M-R0YB:yaml seveluch$ !c
+curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-lnc9b<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 220182SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ !c
+curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-pcpwx<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 380540SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                            READY   STATUS    RESTARTS   AGE
+hello-visits-7bcdcdf454-lnc9b   1/1     Running   0          1m
+hello-visits-7bcdcdf454-n65sh   1/1     Running   0          1m
+hello-visits-7bcdcdf454-pcpwx   1/1     Running   0          1m
+SEVELUCH-M-R0YB:yaml seveluch$ curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-lnc9b<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 589305SEVELUCH-M-R0YB:yaml seveluch$ curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-n65sh<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 457988SEVELUCH-M-R0YB:yaml seveluch$ curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-pcpwx<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 651472SEVELUCH-M-R0YB:yaml seveluch$ curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-lnc9b<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 340457SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout history deployment/hello-visits
+deployment.extensions/hello-visits
+REVISION  CHANGE-CAUSE
+2         kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+3         <none>
+
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl edit deployment/hello-visits
+deployment.extensions/hello-visits edited
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout status deployment/hello-visits
+deployment "hello-visits" successfully rolled out
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout history deployment/hello-visits
+deployment.extensions/hello-visits
+REVISION  CHANGE-CAUSE
+2         kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+3         <none>
+
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout history deployment/hello-visits
+deployment.extensions/hello-visits
+REVISION  CHANGE-CAUSE
+2         kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+3         <none>
+
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout history deployment/hello-visits
+deployment.extensions/hello-visits
+REVISION  CHANGE-CAUSE
+2         kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+3         <none>
+
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout history deployment/hello-visits
+deployment.extensions/hello-visits
+REVISION  CHANGE-CAUSE
+2         kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+3         <none>
+
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout history deployment/hello-visits
+deployment.extensions/hello-visits
+REVISION  CHANGE-CAUSE
+2         kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+3         <none>
+
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout history deployment/hello-visits
+deployment.extensions/hello-visits
+REVISION  CHANGE-CAUSE
+2         kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+3         <none>
+
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v5
+deployment.extensions/hello-visits image updated
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout history deployment/hello-visits
+deployment.extensions/hello-visits
+REVISION  CHANGE-CAUSE
+2         kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+3         <none>
+4         <none>
+
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout history deployment/hello-visits
+deployment.extensions/hello-visits
+REVISION  CHANGE-CAUSE
+2         kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+3         <none>
+4         <none>
+
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout history deployment/hello-visits
+deployment.extensions/hello-visits
+REVISION  CHANGE-CAUSE
+2         kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+3         <none>
+4         <none>
+
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                            READY   STATUS        RESTARTS   AGE
+hello-visits-7bcdcdf454-lnc9b   1/1     Terminating   0          7m
+hello-visits-7bcdcdf454-n65sh   1/1     Terminating   0          7m
+hello-visits-7bcdcdf454-pcpwx   1/1     Terminating   0          7m
+hello-visits-c7496f555-dqc2q    1/1     Running       0          19s
+hello-visits-c7496f555-f479m    1/1     Running       0          19s
+hello-visits-c7496f555-vxxhx    1/1     Running       0          11s
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                            READY   STATUS        RESTARTS   AGE
+hello-visits-7bcdcdf454-lnc9b   1/1     Terminating   0          7m
+hello-visits-7bcdcdf454-n65sh   1/1     Terminating   0          7m
+hello-visits-7bcdcdf454-pcpwx   1/1     Terminating   0          7m
+hello-visits-c7496f555-dqc2q    1/1     Running       0          20s
+hello-visits-c7496f555-f479m    1/1     Running       0          20s
+hello-visits-c7496f555-vxxhx    1/1     Running       0          12s
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout history deployment/hello-visits
+deployment.extensions/hello-visits
+REVISION  CHANGE-CAUSE
+2         kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+3         <none>
+4         <none>
+
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout history deployment/hello-visits
+deployment.extensions/hello-visits
+REVISION  CHANGE-CAUSE
+2         kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+3         <none>
+4         <none>
+
+SEVELUCH-M-R0YB:yaml seveluch$ curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-c7496f555-f479m<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Random Number :</b> 431898SEVELUCH-M-R0YB:yaml seveluch$ curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-c7496f555-f479m<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Random Number :</b> 170142SEVELUCH-M-R0YB:yaml seveluch$ curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-c7496f555-dqc2q<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Random Number :</b> 829475SEVELUCH-M-R0YB:yaml seveluch$ curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-c7496f555-dqc2q<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Random Number :</b> 695091SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout history deployment/hello-visits
+deployment.extensions/hello-visits
+REVISION  CHANGE-CAUSE
+2         kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+3         <none>
+4         <none>
+
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout undo deployment/hello-visits --to-revision=3
+deployment.extensions/hello-visits
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout history deployment/hello-visits
+deployment.extensions/hello-visits
+REVISION  CHANGE-CAUSE
+2         kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+4         <none>
+5         <none>
+
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                            READY   STATUS              RESTARTS   AGE
+hello-visits-7bcdcdf454-bzqm4   1/1     Running             0          8s
+hello-visits-7bcdcdf454-qmnnp   0/1     ContainerCreating   0          8s
+hello-visits-7bcdcdf454-zchvf   0/1     ContainerCreating   0          0s
+hello-visits-c7496f555-dqc2q    1/1     Running             0          3m
+hello-visits-c7496f555-f479m    1/1     Terminating         0          3m
+hello-visits-c7496f555-vxxhx    1/1     Terminating         0          3m
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout status deployment/hello-visits
+deployment "hello-visits" successfully rolled out
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                            READY   STATUS        RESTARTS   AGE
+hello-visits-7bcdcdf454-bzqm4   1/1     Running       0          25s
+hello-visits-7bcdcdf454-qmnnp   1/1     Running       0          25s
+hello-visits-7bcdcdf454-zchvf   1/1     Running       0          17s
+hello-visits-c7496f555-dqc2q    1/1     Terminating   0          3m
+hello-visits-c7496f555-f479m    1/1     Terminating   0          3m
+hello-visits-c7496f555-vxxhx    1/1     Terminating   0          3m
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl rollout history deployment/hello-visits
+deployment.extensions/hello-visits
+REVISION  CHANGE-CAUSE
+2         kubectl set image deployment/hello-visits hello-visits=meencloud/hello-visits:v6 --record=true
+4         <none>
+5         <none>
+
+SEVELUCH-M-R0YB:yaml seveluch$ curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-zchvf<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 147465SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-zchvf<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 440084SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$

@@ -1,0 +1,887 @@
+Replication controller horizontal scaling
+
+
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From               Message
+  ----    ------                 ----  ----               -------
+  Normal  Scheduled              23s   default-scheduler  Successfully assigned hello-visits-controller-drlf4 to minikube
+  Normal  SuccessfulMountVolume  23s   kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 22s   kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                22s   kubelet, minikube  Created container
+  Normal  Started                21s   kubelet, minikube  Started container
+
+
+Name:           hello-visits-controller-jfjt6
+Namespace:      default
+Node:           minikube/172.16.2.129
+Start Time:     Wed, 07 Nov 2018 11:02:12 +0530
+Labels:         app=hello-visits
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.7
+Controlled By:  ReplicationController/hello-visits-controller
+Containers:
+  hello-visits:
+    Container ID:   docker://e80871723e67822335d8f4779323c8c166007604de55702dbbc04bf953fc89a2
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 07 Nov 2018 11:02:13 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From               Message
+  ----    ------                 ----  ----               -------
+  Normal  Scheduled              23s   default-scheduler  Successfully assigned hello-visits-controller-jfjt6 to minikube
+  Normal  SuccessfulMountVolume  23s   kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 22s   kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                22s   kubelet, minikube  Created container
+  Normal  Started                22s   kubelet, minikube  Started container
+
+
+Name:           hello-visits-controller-lgktg
+Namespace:      default
+Node:           minikube/172.16.2.129
+Start Time:     Wed, 07 Nov 2018 11:02:12 +0530
+Labels:         app=hello-visits
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.8
+Controlled By:  ReplicationController/hello-visits-controller
+Containers:
+  hello-visits:
+    Container ID:   docker://a179cb565f0999556a69046796cf9867ac36165d2f0b09339353ab9e52458a24
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 07 Nov 2018 11:02:13 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From               Message
+  ----    ------                 ----  ----               -------
+  Normal  Scheduled              23s   default-scheduler  Successfully assigned hello-visits-controller-lgktg to minikube
+  Normal  SuccessfulMountVolume  23s   kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 22s   kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                22s   kubelet, minikube  Created container
+  Normal  Started                22s   kubelet, minikube  Started container
+
+
+Name:           hello-visits-controller-lmqbk
+Namespace:      default
+Node:           minikube/172.16.2.129
+Start Time:     Wed, 07 Nov 2018 11:01:25 +0530
+Labels:         app=hello-visits
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.5
+Controlled By:  ReplicationController/hello-visits-controller
+Containers:
+  hello-visits:
+    Container ID:   docker://158a8b3b1281bd50d5cb68837bb54ee2e4cebb3ccbf51a11399d0cdabe9254d1
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 07 Nov 2018 11:01:26 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From               Message
+  ----    ------                 ----  ----               -------
+  Normal  Scheduled              70s   default-scheduler  Successfully assigned hello-visits-controller-lmqbk to minikube
+  Normal  SuccessfulMountVolume  70s   kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 69s   kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                69s   kubelet, minikube  Created container
+  Normal  Started                69s   kubelet, minikube  Started container
+
+
+Name:           hello-visits-controller-mxs54
+Namespace:      default
+Node:           minikube/172.16.2.129
+Start Time:     Wed, 07 Nov 2018 11:02:12 +0530
+Labels:         app=hello-visits
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.10
+Controlled By:  ReplicationController/hello-visits-controller
+Containers:
+  hello-visits:
+    Container ID:   docker://da24e4e60b83c73d32ee3a6d6a5af73de81bf3e7491aec1c8c9731285454ea16
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 07 Nov 2018 11:02:14 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From               Message
+  ----    ------                 ----  ----               -------
+  Normal  Scheduled              23s   default-scheduler  Successfully assigned hello-visits-controller-mxs54 to minikube
+  Normal  SuccessfulMountVolume  22s   kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 21s   kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                21s   kubelet, minikube  Created container
+  Normal  Started                21s   kubelet, minikube  Started container
+
+
+Name:           hello-visits-controller-xc2s4
+Namespace:      default
+Node:           minikube/172.16.2.129
+Start Time:     Wed, 07 Nov 2018 11:01:25 +0530
+Labels:         app=hello-visits
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.6
+Controlled By:  ReplicationController/hello-visits-controller
+Containers:
+  hello-visits:
+    Container ID:   docker://2d431f1f4e2de5288d069e9afedfb8cb72f4aeddbe6737228c0c7b1a3c3b4f47
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 07 Nov 2018 11:01:26 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From               Message
+  ----    ------                 ----  ----               -------
+  Normal  Scheduled              70s   default-scheduler  Successfully assigned hello-visits-controller-xc2s4 to minikube
+  Normal  SuccessfulMountVolume  70s   kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 69s   kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                69s   kubelet, minikube  Created container
+  Normal  Started                69s   kubelet, minikube  Started container
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl describe pods
+Name:           hello-visits-controller-drlf4
+Namespace:      default
+Node:           minikube/172.16.2.129
+Start Time:     Wed, 07 Nov 2018 11:02:12 +0530
+Labels:         app=hello-visits
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.9
+Controlled By:  ReplicationController/hello-visits-controller
+Containers:
+  hello-visits:
+    Container ID:   docker://4405b969fafd5e94be24b8af285564ad78e01843004da3168994ae5823a554a6
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 07 Nov 2018 11:02:14 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From               Message
+  ----    ------                 ----  ----               -------
+  Normal  Scheduled              26s   default-scheduler  Successfully assigned hello-visits-controller-drlf4 to minikube
+  Normal  SuccessfulMountVolume  26s   kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 25s   kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                25s   kubelet, minikube  Created container
+  Normal  Started                24s   kubelet, minikube  Started container
+
+
+Name:           hello-visits-controller-jfjt6
+Namespace:      default
+Node:           minikube/172.16.2.129
+Start Time:     Wed, 07 Nov 2018 11:02:12 +0530
+Labels:         app=hello-visits
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.7
+Controlled By:  ReplicationController/hello-visits-controller
+Containers:
+  hello-visits:
+    Container ID:   docker://e80871723e67822335d8f4779323c8c166007604de55702dbbc04bf953fc89a2
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 07 Nov 2018 11:02:13 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From               Message
+  ----    ------                 ----  ----               -------
+  Normal  Scheduled              26s   default-scheduler  Successfully assigned hello-visits-controller-jfjt6 to minikube
+  Normal  SuccessfulMountVolume  26s   kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 25s   kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                25s   kubelet, minikube  Created container
+  Normal  Started                25s   kubelet, minikube  Started container
+
+
+Name:           hello-visits-controller-lgktg
+Namespace:      default
+Node:           minikube/172.16.2.129
+Start Time:     Wed, 07 Nov 2018 11:02:12 +0530
+Labels:         app=hello-visits
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.8
+Controlled By:  ReplicationController/hello-visits-controller
+Containers:
+  hello-visits:
+    Container ID:   docker://a179cb565f0999556a69046796cf9867ac36165d2f0b09339353ab9e52458a24
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 07 Nov 2018 11:02:13 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From               Message
+  ----    ------                 ----  ----               -------
+  Normal  Scheduled              26s   default-scheduler  Successfully assigned hello-visits-controller-lgktg to minikube
+  Normal  SuccessfulMountVolume  26s   kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 25s   kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                25s   kubelet, minikube  Created container
+  Normal  Started                25s   kubelet, minikube  Started container
+
+
+Name:           hello-visits-controller-lmqbk
+Namespace:      default
+Node:           minikube/172.16.2.129
+Start Time:     Wed, 07 Nov 2018 11:01:25 +0530
+Labels:         app=hello-visits
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.5
+Controlled By:  ReplicationController/hello-visits-controller
+Containers:
+  hello-visits:
+    Container ID:   docker://158a8b3b1281bd50d5cb68837bb54ee2e4cebb3ccbf51a11399d0cdabe9254d1
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 07 Nov 2018 11:01:26 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From               Message
+  ----    ------                 ----  ----               -------
+  Normal  Scheduled              73s   default-scheduler  Successfully assigned hello-visits-controller-lmqbk to minikube
+  Normal  SuccessfulMountVolume  73s   kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 72s   kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                72s   kubelet, minikube  Created container
+  Normal  Started                72s   kubelet, minikube  Started container
+
+
+Name:           hello-visits-controller-mxs54
+Namespace:      default
+Node:           minikube/172.16.2.129
+Start Time:     Wed, 07 Nov 2018 11:02:12 +0530
+Labels:         app=hello-visits
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.10
+Controlled By:  ReplicationController/hello-visits-controller
+Containers:
+  hello-visits:
+    Container ID:   docker://da24e4e60b83c73d32ee3a6d6a5af73de81bf3e7491aec1c8c9731285454ea16
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 07 Nov 2018 11:02:14 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From               Message
+  ----    ------                 ----  ----               -------
+  Normal  Scheduled              26s   default-scheduler  Successfully assigned hello-visits-controller-mxs54 to minikube
+  Normal  SuccessfulMountVolume  25s   kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 24s   kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                24s   kubelet, minikube  Created container
+  Normal  Started                24s   kubelet, minikube  Started container
+
+
+Name:           hello-visits-controller-xc2s4
+Namespace:      default
+Node:           minikube/172.16.2.129
+Start Time:     Wed, 07 Nov 2018 11:01:25 +0530
+Labels:         app=hello-visits
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.6
+Controlled By:  ReplicationController/hello-visits-controller
+Containers:
+  hello-visits:
+    Container ID:   docker://2d431f1f4e2de5288d069e9afedfb8cb72f4aeddbe6737228c0c7b1a3c3b4f47
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 07 Nov 2018 11:01:26 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From               Message
+  ----    ------                 ----  ----               -------
+  Normal  Scheduled              73s   default-scheduler  Successfully assigned hello-visits-controller-xc2s4 to minikube
+  Normal  SuccessfulMountVolume  73s   kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 72s   kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                72s   kubelet, minikube  Created container
+  Normal  Started                72s   kubelet, minikube  Started container
+bash-3.2$ kubectl get pods
+NAME                            READY   STATUS    RESTARTS   AGE
+hello-visits-controller-drlf4   1/1     Running   0          29s
+hello-visits-controller-jfjt6   1/1     Running   0          29s
+hello-visits-controller-lgktg   1/1     Running   0          29s
+hello-visits-controller-lmqbk   1/1     Running   0          1m
+hello-visits-controller-mxs54   1/1     Running   0          29s
+hello-visits-controller-xc2s4   1/1     Running   0          1m
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl scale --replicas=2 rc/hello-visits-controller
+replicationcontroller/hello-visits-controller scaled
+bash-3.2$ kubectl describe pods
+Name:                      hello-visits-controller-drlf4
+Namespace:                 default
+Node:                      minikube/172.16.2.129
+Start Time:                Wed, 07 Nov 2018 11:02:12 +0530
+Labels:                    app=hello-visits
+Annotations:               <none>
+Status:                    Terminating (lasts 27s)
+Termination Grace Period:  30s
+IP:                        172.17.0.9
+Controlled By:             ReplicationController/hello-visits-controller
+Containers:
+  hello-visits:
+    Container ID:   docker://4405b969fafd5e94be24b8af285564ad78e01843004da3168994ae5823a554a6
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 07 Nov 2018 11:02:14 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From               Message
+  ----    ------                 ----  ----               -------
+  Normal  Scheduled              39s   default-scheduler  Successfully assigned hello-visits-controller-drlf4 to minikube
+  Normal  SuccessfulMountVolume  39s   kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 38s   kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                38s   kubelet, minikube  Created container
+  Normal  Started                37s   kubelet, minikube  Started container
+
+
+Name:                      hello-visits-controller-jfjt6
+Namespace:                 default
+Node:                      minikube/172.16.2.129
+Start Time:                Wed, 07 Nov 2018 11:02:12 +0530
+Labels:                    app=hello-visits
+Annotations:               <none>
+Status:                    Terminating (lasts 27s)
+Termination Grace Period:  30s
+IP:                        172.17.0.7
+Controlled By:             ReplicationController/hello-visits-controller
+Containers:
+  hello-visits:
+    Container ID:   docker://e80871723e67822335d8f4779323c8c166007604de55702dbbc04bf953fc89a2
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 07 Nov 2018 11:02:13 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From               Message
+  ----    ------                 ----  ----               -------
+  Normal  Scheduled              39s   default-scheduler  Successfully assigned hello-visits-controller-jfjt6 to minikube
+  Normal  SuccessfulMountVolume  39s   kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 38s   kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                38s   kubelet, minikube  Created container
+  Normal  Started                38s   kubelet, minikube  Started container
+
+
+Name:                      hello-visits-controller-lgktg
+Namespace:                 default
+Node:                      minikube/172.16.2.129
+Start Time:                Wed, 07 Nov 2018 11:02:12 +0530
+Labels:                    app=hello-visits
+Annotations:               <none>
+Status:                    Terminating (lasts 27s)
+Termination Grace Period:  30s
+IP:                        172.17.0.8
+Controlled By:             ReplicationController/hello-visits-controller
+Containers:
+  hello-visits:
+    Container ID:   docker://a179cb565f0999556a69046796cf9867ac36165d2f0b09339353ab9e52458a24
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 07 Nov 2018 11:02:13 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From               Message
+  ----    ------                 ----  ----               -------
+  Normal  Scheduled              39s   default-scheduler  Successfully assigned hello-visits-controller-lgktg to minikube
+  Normal  SuccessfulMountVolume  39s   kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 38s   kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                38s   kubelet, minikube  Created container
+  Normal  Started                38s   kubelet, minikube  Started container
+
+
+Name:           hello-visits-controller-lmqbk
+Namespace:      default
+Node:           minikube/172.16.2.129
+Start Time:     Wed, 07 Nov 2018 11:01:25 +0530
+Labels:         app=hello-visits
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.5
+Controlled By:  ReplicationController/hello-visits-controller
+Containers:
+  hello-visits:
+    Container ID:   docker://158a8b3b1281bd50d5cb68837bb54ee2e4cebb3ccbf51a11399d0cdabe9254d1
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 07 Nov 2018 11:01:26 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From               Message
+  ----    ------                 ----  ----               -------
+  Normal  Scheduled              86s   default-scheduler  Successfully assigned hello-visits-controller-lmqbk to minikube
+  Normal  SuccessfulMountVolume  86s   kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 85s   kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                85s   kubelet, minikube  Created container
+  Normal  Started                85s   kubelet, minikube  Started container
+
+
+Name:                      hello-visits-controller-mxs54
+Namespace:                 default
+Node:                      minikube/172.16.2.129
+Start Time:                Wed, 07 Nov 2018 11:02:12 +0530
+Labels:                    app=hello-visits
+Annotations:               <none>
+Status:                    Terminating (lasts 27s)
+Termination Grace Period:  30s
+IP:                        172.17.0.10
+Controlled By:             ReplicationController/hello-visits-controller
+Containers:
+  hello-visits:
+    Container ID:   docker://da24e4e60b83c73d32ee3a6d6a5af73de81bf3e7491aec1c8c9731285454ea16
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 07 Nov 2018 11:02:14 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From               Message
+  ----    ------                 ----  ----               -------
+  Normal  Scheduled              39s   default-scheduler  Successfully assigned hello-visits-controller-mxs54 to minikube
+  Normal  SuccessfulMountVolume  38s   kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 37s   kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                37s   kubelet, minikube  Created container
+  Normal  Started                37s   kubelet, minikube  Started container
+
+
+Name:           hello-visits-controller-xc2s4
+Namespace:      default
+Node:           minikube/172.16.2.129
+Start Time:     Wed, 07 Nov 2018 11:01:25 +0530
+Labels:         app=hello-visits
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.6
+Controlled By:  ReplicationController/hello-visits-controller
+Containers:
+  hello-visits:
+    Container ID:   docker://2d431f1f4e2de5288d069e9afedfb8cb72f4aeddbe6737228c0c7b1a3c3b4f47
+    Image:          meencloud/hello-visits:v5
+    Image ID:       docker-pullable://meencloud/hello-visits@sha256:6cc7430d56b82c742ececa754f0a122a0dbe426ba378f9a9510e1c29058b2041
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 07 Nov 2018 11:01:26 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-qhxd4 (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-qhxd4:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-qhxd4
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age   From               Message
+  ----    ------                 ----  ----               -------
+  Normal  Scheduled              86s   default-scheduler  Successfully assigned hello-visits-controller-xc2s4 to minikube
+  Normal  SuccessfulMountVolume  86s   kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-qhxd4"
+  Normal  Pulled                 85s   kubelet, minikube  Container image "meencloud/hello-visits:v5" already present on machine
+  Normal  Created                85s   kubelet, minikube  Created container
+  Normal  Started                85s   kubelet, minikube  Started container
+bash-3.2$ kubectl get pods
+NAME                            READY   STATUS        RESTARTS   AGE
+hello-visits-controller-drlf4   1/1     Terminating   0          43s
+hello-visits-controller-jfjt6   1/1     Terminating   0          43s
+hello-visits-controller-lgktg   1/1     Terminating   0          43s
+hello-visits-controller-lmqbk   1/1     Running       0          1m
+hello-visits-controller-mxs54   1/1     Terminating   0          43s
+hello-visits-controller-xc2s4   1/1     Running       0          1m
+bash-3.2$ kubectl get pods
+NAME                            READY   STATUS        RESTARTS   AGE
+hello-visits-controller-drlf4   1/1     Terminating   0          44s
+hello-visits-controller-jfjt6   1/1     Terminating   0          44s
+hello-visits-controller-lgktg   1/1     Terminating   0          44s
+hello-visits-controller-lmqbk   1/1     Running       0          1m
+hello-visits-controller-mxs54   1/1     Terminating   0          44s
+hello-visits-controller-xc2s4   1/1     Running       0          1m
+bash-3.2$ kubectl get pods
+NAME                            READY   STATUS        RESTARTS   AGE
+hello-visits-controller-drlf4   1/1     Terminating   0          45s
+hello-visits-controller-jfjt6   1/1     Terminating   0          45s
+hello-visits-controller-lgktg   1/1     Terminating   0          45s
+hello-visits-controller-lmqbk   1/1     Running       0          1m
+hello-visits-controller-mxs54   1/1     Terminating   0          45s
+hello-visits-controller-xc2s4   1/1     Running       0          1m
+bash-3.2$ kubectl get pods
+NAME                            READY   STATUS        RESTARTS   AGE
+hello-visits-controller-drlf4   1/1     Terminating   0          1m
+hello-visits-controller-jfjt6   1/1     Terminating   0          1m
+hello-visits-controller-lgktg   1/1     Terminating   0          1m
+hello-visits-controller-lmqbk   1/1     Running       0          1m
+hello-visits-controller-mxs54   1/1     Terminating   0          1m
+hello-visits-controller-xc2s4   1/1     Running       0          1m
+bash-3.2$ kubectl get pods
+NAME                            READY   STATUS    RESTARTS   AGE
+hello-visits-controller-lmqbk   1/1     Running   0          2m
+hello-visits-controller-xc2s4   1/1     Running   0          2m
+bash-3.2$ kubectl delete rc
+error: resource(s) were provided, but no name, label selector, or --all flag specified
+bash-3.2$ kubectl delete rc/hello-visits-controller
+replicationcontroller "hello-visits-controller" deleted
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl get pods
+NAME                            READY   STATUS        RESTARTS   AGE
+hello-visits-controller-lmqbk   1/1     Terminating   0          2m
+hello-visits-controller-xc2s4   1/1     Terminating   0          2m
+bash-3.2$
+bash-3.2$
+bash-3.2$ kubectl get pods
+No resources found.
+
+bash-3.2$ kubectl get rc/hello-visits-controller
+Error from server (NotFound): replicationcontrollers "hello-visits-controller" not found
+bash-3.2$

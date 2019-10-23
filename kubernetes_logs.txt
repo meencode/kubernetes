@@ -1,0 +1,2273 @@
+  -v, --v Level                          log level for V logs
+      --vmodule moduleSpec               comma-separated list of pattern=N settings for file-filtered logging
+
+SEVELUCH-M-R0YB:~ seveluch$ minikube start --v 5 --vm-driver=vmwarefusion
+Starting local Kubernetes v1.10.0 cluster...
+Starting VM...
+E1104 09:11:22.254085   10063 start.go:168] Error starting host: Error getting state for host: exit status 126.
+
+ Retrying.
+E1104 09:11:22.255589   10063 start.go:174] Error starting host:  Error getting state for host: exit status 126
+E1104 09:11:32.258201   10063 util.go:151] Error uploading error message: : Post https://clouderrorreporting.googleapis.com/v1beta1/projects/k8s-minikube/events:report?key=AIzaSyACUwzG0dEPcl-eOgpDKnyKoUFgHdfoFuA: dial tcp [2404:6800:4007:80d::200a]:443: connect: no route to host
+SEVELUCH-M-R0YB:~ seveluch$ brew cask uninstall minikube
+==> Uninstalling Cask minikube
+==> Unlinking Binary '/usr/local/bin/minikube'.
+==> Purging files for version 0.30.0 of Cask minikube
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$ minikube
+-bash: /usr/local/bin/minikube: No such file or directory
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$ brew cask uninstall minikube
+Error: Cask 'minikube' is not installed.
+SEVELUCH-M-R0YB:~ seveluch$ brew cask install https://raw.githubusercontent.com/caskroom/homebrew-cask/c899e526fa6e9211be92c4454ff9a7bb410622bc/Casks/minikube.rb
+Error: Another active Homebrew update process is already in progress.
+Please wait for it to finish or terminate it to continue.
+==> Downloading https://raw.githubusercontent.com/caskroom/homebrew-cask/c899e526fa6e9211be92c4454ff9a7bb410622bc/Casks/mi
+######################################################################## 100.0%
+==> Satisfying dependencies
+All Formula dependencies satisfied.
+==> Downloading https://storage.googleapis.com/minikube/releases/v0.25.2/minikube-darwin-amd64
+######################################################################## 100.0%
+==> Verifying SHA-256 checksum for Cask 'minikube'.
+==> Installing Cask minikube
+==> Linking Binary 'minikube-darwin-amd64' to '/usr/local/bin/minikube'.
+🍺  minikube was successfully installed!
+SEVELUCH-M-R0YB:~ seveluch$ minikube --vm-driver=vmwarefusion --loglevel 2 start
+Starting local Kubernetes v1.9.4 cluster...
+Starting VM...
+E1104 09:18:16.951923   11930 start.go:159] Error starting host: Error getting state for host: exit status 126.
+
+ Retrying.
+E1104 09:18:16.952831   11930 start.go:165] Error starting host:  Error getting state for host: exit status 126
+E1104 09:18:26.955296   11930 util.go:151] Error uploading error message: : Post https://clouderrorreporting.googleapis.com/v1beta1/projects/k8s-minikube/events:report?key=AIzaSyACUwzG0dEPcl-eOgpDKnyKoUFgHdfoFuA: dial tcp [2404:6800:4007:80e::200a]:443: connect: no route to host
+SEVELUCH-M-R0YB:~ seveluch$ minikube --vm-driver=vmwarefusion --loglevel 2 start
+Starting local Kubernetes v1.9.4 cluster...
+Starting VM...
+E1104 09:18:35.512916   11954 start.go:159] Error starting host: Error getting state for host: exit status 126.
+
+ Retrying.
+E1104 09:18:35.514397   11954 start.go:165] Error starting host:  Error getting state for host: exit status 126
+E1104 09:18:45.517907   11954 util.go:151] Error uploading error message: : Post https://clouderrorreporting.googleapis.com/v1beta1/projects/k8s-minikube/events:report?key=AIzaSyACUwzG0dEPcl-eOgpDKnyKoUFgHdfoFuA: dial tcp [2404:6800:4007:808::200a]:443: connect: no route to host
+SEVELUCH-M-R0YB:~ seveluch$ brew cask uninstall minikube
+==> Uninstalling Cask minikube
+==> Unlinking Binary '/usr/local/bin/minikube'.
+==> Purging files for version 0.25.2 of Cask minikube
+SEVELUCH-M-R0YB:~ seveluch$
+
+Session Contents Restored
+
+Last login: Sun Nov  4 00:12:31 on ttys001
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$ kubectl
+kubectl controls the Kubernetes cluster manager.
+
+Find more information at: https://kubernetes.io/docs/reference/kubectl/overview/
+
+Basic Commands (Beginner):
+  create         Create a resource from a file or from stdin.
+  expose         Take a replication controller, service, deployment or pod and expose it as a new Kubernetes Service
+  run            Run a particular image on the cluster
+  set            Set specific features on objects
+
+Basic Commands (Intermediate):
+  explain        Documentation of resources
+  get            Display one or many resources
+  edit           Edit a resource on the server
+  delete         Delete resources by filenames, stdin, resources and names, or by resources and label selector
+
+Deploy Commands:
+  rollout        Manage the rollout of a resource
+  scale          Set a new size for a Deployment, ReplicaSet, Replication Controller, or Job
+  autoscale      Auto-scale a Deployment, ReplicaSet, or ReplicationController
+
+Cluster Management Commands:
+  certificate    Modify certificate resources.
+  cluster-info   Display cluster info
+  top            Display Resource (CPU/Memory/Storage) usage.
+  cordon         Mark node as unschedulable
+  uncordon       Mark node as schedulable
+  drain          Drain node in preparation for maintenance
+  taint          Update the taints on one or more nodes
+
+Troubleshooting and Debugging Commands:
+  describe       Show details of a specific resource or group of resources
+  logs           Print the logs for a container in a pod
+  attach         Attach to a running container
+  exec           Execute a command in a container
+  port-forward   Forward one or more local ports to a pod
+  proxy          Run a proxy to the Kubernetes API server
+  cp             Copy files and directories to and from containers.
+  auth           Inspect authorization
+
+Advanced Commands:
+  apply          Apply a configuration to a resource by filename or stdin
+  patch          Update field(s) of a resource using strategic merge patch
+  replace        Replace a resource by filename or stdin
+  wait           Experimental: Wait for a specific condition on one or many resources.
+  convert        Convert config files between different API versions
+
+Settings Commands:
+  label          Update the labels on a resource
+  annotate       Update the annotations on a resource
+  completion     Output shell completion code for the specified shell (bash or zsh)
+
+Other Commands:
+  alpha          Commands for features in alpha
+  api-resources  Print the supported API resources on the server
+  api-versions   Print the supported API versions on the server, in the form of "group/version"
+  config         Modify kubeconfig files
+  plugin         Provides utilities for interacting with plugins.
+  version        Print the client and server version information
+
+Usage:
+  kubectl [flags] [options]
+
+Use "kubectl <command> --help" for more information about a given command.
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+SEVELUCH-M-R0YB:~ seveluch$ brew install caskroom/cask/minikube
+Updating Homebrew...
+==> Auto-updated Homebrew!
+Updated 2 taps (homebrew/core and homebrew/cask).
+==> Updated Formulae
+bazel                   libgit2-glib            openrtsp                spdlog                  travis
+braid                   mackup                  pandoc                  tectonic                unshield
+goenv                   maxwell                 rmlint                  thors-serializer        vapoursynth
+haste-client            mikutter                ruby                    topgrade                xcodegen
+libgit2                 node                    snapraid                translate-toolkit       yosys
+
+==> brew cask install caskroom/cask/minikube
+==> Satisfying dependencies
+All Formula dependencies satisfied.
+==> Downloading https://storage.googleapis.com/minikube/releases/v0.30.0/minikube-darwin-amd64
+Already downloaded: /Users/seveluch/Library/Caches/Homebrew/downloads/09b513ea2f0ecb6a116938d02b7fa3eb0afc98b9ddbceece7a8cf8d1d6ff60cf--minikube-darwin-amd64
+==> Verifying SHA-256 checksum for Cask 'minikube'.
+==> Installing Cask minikube
+==> Linking Binary 'minikube-darwin-amd64' to '/usr/local/bin/minikube'.
+🍺  minikube was successfully installed!
+SEVELUCH-M-R0YB:~ seveluch$ minikube --vm-driver=vmwarefusion --loglevel 2 start
+Error: unknown flag: --loglevel
+Usage:
+  minikube start [flags]
+
+Flags:
+      --apiserver-ips ipSlice          A set of apiserver IP Addresses which are used in the generated certificate for kubernetes.  This can be used if you want to make the apiserver available from outside the machine (default [])
+      --apiserver-name string          The apiserver name which is used in the generated certificate for kubernetes.  This can be used if you want to make the apiserver available from outside the machine (default "minikubeCA")
+      --apiserver-names stringArray    A set of apiserver names which are used in the generated certificate for kubernetes.  This can be used if you want to make the apiserver available from outside the machine
+      --cache-images                   If true, cache docker images for the current bootstrapper and load them into the machine.
+      --container-runtime string       The container runtime to be used
+      --cpus int                       Number of CPUs allocated to the minikube VM (default 2)
+      --disable-driver-mounts          Disables the filesystem mounts provided by the hypervisors (vboxfs, xhyve-9p)
+      --disk-size string               Disk size allocated to the minikube VM (format: <number>[<unit>], where unit = b, k, m or g) (default "20g")
+      --dns-domain string              The cluster dns domain name used in the kubernetes cluster (default "cluster.local")
+      --docker-env stringArray         Environment variables to pass to the Docker daemon. (format: key=value)
+      --docker-opt stringArray         Specify arbitrary flags to pass to the Docker daemon. (format: key=value)
+      --extra-config ExtraOption       A set of key=value pairs that describe configuration that may be passed to different components.
+                                       		The key should be '.' separated, and the first part before the dot is the component to apply the configuration to.
+                                       		Valid components are: kubelet, apiserver, controller-manager, etcd, proxy, scheduler.
+      --feature-gates string           A set of key=value pairs that describe feature gates for alpha/experimental features.
+      --gpu                            Enable experimental NVIDIA GPU support in minikube (works only with kvm2 driver on Linux)
+  -h, --help                           help for start
+      --host-only-cidr string          The CIDR to be used for the minikube VM (only supported with Virtualbox driver) (default "192.168.99.1/24")
+      --hyperkit-vpnkit-sock string    Location of the VPNKit socket used for networking. If empty, disables Hyperkit VPNKitSock, if 'auto' uses Docker for Mac VPNKit connection, otherwise uses the specified VSock.
+      --hyperkit-vsock-ports strings   List of guest VSock ports that should be exposed as sockets on the host (Only supported on with hyperkit now).
+      --hyperv-virtual-switch string   The hyperv virtual switch name. Defaults to first found. (only supported with HyperV driver)
+      --insecure-registry strings      Insecure Docker registries to pass to the Docker daemon.  The default service CIDR range will automatically be added.
+      --iso-url string                 Location of the minikube iso (default "https://storage.googleapis.com/minikube/iso/minikube-v0.30.0.iso")
+      --keep-context                   This will keep the existing kubectl context and will create a minikube context.
+      --kubernetes-version string      The kubernetes version that the minikube VM will use (ex: v1.2.3) (default "v1.10.0")
+      --kvm-network string             The KVM network name. (only supported with KVM driver) (default "default")
+      --memory int                     Amount of RAM allocated to the minikube VM in MB (default 2048)
+      --mount                          This will start the mount daemon and automatically mount files into minikube
+      --mount-string string            The argument to pass the minikube mount command on start (default "/Users:/minikube-host")
+      --network-plugin string          The name of the network plugin
+      --nfs-share strings              Local folders to share with Guest via NFS mounts (Only supported on with hyperkit now)
+      --nfs-shares-root string         Where to root the NFS Shares (defaults to /nfsshares, only supported with hyperkit now) (default "/nfsshares")
+      --registry-mirror strings        Registry mirrors to pass to the Docker daemon
+      --uuid string                    Provide VM UUID to restore MAC address (only supported with Hyperkit driver).
+      --vm-driver string               VM driver is one of: [virtualbox vmwarefusion kvm xhyve hyperv hyperkit kvm2 none] (default "virtualbox")
+      --xhyve-disk-driver string       The disk driver to use [ahci-hd|virtio-blk] (only supported with xhyve driver) (default "ahci-hd")
+
+Global Flags:
+      --alsologtostderr                  log to standard error as well as files
+  -b, --bootstrapper string              The name of the cluster bootstrapper that will set up the kubernetes cluster. (default "kubeadm")
+      --log_backtrace_at traceLocation   when logging hits line file:N, emit a stack trace (default :0)
+      --log_dir string                   If non-empty, write log files in this directory
+      --logtostderr                      log to standard error instead of files
+  -p, --profile string                   The name of the minikube VM being used.
+                                         	This can be modified to allow for multiple minikube instances to be run independently (default "minikube")
+      --stderrthreshold severity         logs at or above this threshold go to stderr (default 2)
+  -v, --v Level                          log level for V logs
+      --vmodule moduleSpec               comma-separated list of pattern=N settings for file-filtered logging
+
+SEVELUCH-M-R0YB:~ seveluch$ minikube --vm-driver=vmwarefusion start
+Starting local Kubernetes v1.10.0 cluster...
+Starting VM...
+E1105 08:10:48.955427   20627 start.go:168] Error starting host: Error getting state for host: exit status 126.
+
+ Retrying.
+E1105 08:10:48.956646   20627 start.go:174] Error starting host:  Error getting state for host: exit status 126
+SEVELUCH-M-R0YB:~ seveluch$ minikube delete
+Deleting local Kubernetes cluster...
+Errors occurred deleting machine:  exit status 126
+SEVELUCH-M-R0YB:~ seveluch$ minikube delete
+Deleting local Kubernetes cluster...
+Errors occurred deleting machine:  Error deleting host: minikube: Error loading host from store: Docker machine "minikube" does not exist. Use "docker-machine ls" to list machines. Use "docker-machine create" to add a new one.
+SEVELUCH-M-R0YB:~ seveluch$ rm -rf /usr/local/bin/VBox*
+SEVELUCH-M-R0YB:~ seveluch$ /usr/local/bin/vbox*
+/usr/local/bin/vbox-img: line 2: /Applications/VirtualBox.app/Contents/MacOS/vbox-img: No such file or directory
+/usr/local/bin/vbox-img: line 2: exec: /Applications/VirtualBox.app/Contents/MacOS/vbox-img: cannot execute: No such file or directory
+SEVELUCH-M-R0YB:~ seveluch$ rm -rf /usr/local/bin/vbox*
+SEVELUCH-M-R0YB:~ seveluch$ minikube --vm-driver=vmwarefusion start
+Starting local Kubernetes v1.10.0 cluster...
+Starting VM...
+Downloading Minikube ISO
+ 170.78 MB / 170.78 MB [============================================] 100.00% 0s
+Getting VM IP address...
+Moving files into cluster...
+Downloading kubelet v1.10.0
+Downloading kubeadm v1.10.0
+Finished Downloading kubeadm v1.10.0
+Finished Downloading kubelet v1.10.0
+Setting up certs...
+Connecting to cluster...
+Setting up kubeconfig...
+Starting cluster components...
+Kubectl is now configured to use the cluster.
+Loading cached images from config file.
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$ kubectl version
+Client Version: version.Info{Major:"1", Minor:"12", GitVersion:"v1.12.2", GitCommit:"17c77c7898218073f14c8d573582e8d2313dc740", GitTreeState:"clean", BuildDate:"2018-10-30T21:39:38Z", GoVersion:"go1.11.1", Compiler:"gc", Platform:"darwin/amd64"}
+Server Version: version.Info{Major:"1", Minor:"10", GitVersion:"v1.10.0", GitCommit:"fc32d2f3698e36b93322a3465f63a14e9f0eaead", GitTreeState:"clean", BuildDate:"2018-03-26T16:44:10Z", GoVersion:"go1.9.3", Compiler:"gc", Platform:"linux/amd64"}
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get node
+NAME       STATUS   ROLES    AGE   VERSION
+minikube   Ready    master   2m    v1.10.0
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods
+No resources found.
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get namespaces
+NAME          STATUS   AGE
+default       Active   2m
+kube-public   Active   2m
+kube-system   Active   2m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployments
+No resources found.
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get services
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   2m
+SEVELUCH-M-R0YB:~ seveluch$ minikube stop
+Stopping local Kubernetes cluster...
+Machine stopped.
+SEVELUCH-M-R0YB:~ seveluch$ minikube --vm-driver=vmwarefusion start
+Starting local Kubernetes v1.10.0 cluster...
+Starting VM...
+Getting VM IP address...
+Moving files into cluster...
+Setting up certs...
+Connecting to cluster...
+Setting up kubeconfig...
+Starting cluster components...
+Kubectl is now configured to use the cluster.
+Loading cached images from config file.
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get node
+NAME       STATUS   ROLES    AGE   VERSION
+minikube   Ready    master   7m    v1.10.0
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployment
+No resources found.
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployments
+No resources found.
+SEVELUCH-M-R0YB:~ seveluch$ kubectl run kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1 --port=8080
+kubectl run --generator=deployment/apps.v1beta1 is DEPRECATED and will be removed in a future version. Use kubectl create instead.
+deployment.apps/kubernetes-bootcamp created
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployments
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   1         1         1            0           3s
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods
+NAME                                   READY   STATUS              RESTARTS   AGE
+kubernetes-bootcamp-5c69669756-246td   0/1     ContainerCreating   0          8s
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods
+NAME                                   READY   STATUS              RESTARTS   AGE
+kubernetes-bootcamp-5c69669756-246td   0/1     ContainerCreating   0          10s
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods
+NAME                                   READY   STATUS              RESTARTS   AGE
+kubernetes-bootcamp-5c69669756-246td   0/1     ContainerCreating   0          11s
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployments
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   1         1         1            0           15s
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployments
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   1         1         1            1           58s
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods
+NAME                                   READY   STATUS    RESTARTS   AGE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running   0          1m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get services
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   8m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get --help
+Display one or many resources
+
+Prints a table of the most important information about the specified resources. You can filter the list using a label
+selector and the --selector flag. If the desired resource type is namespaced you will only see results in your current
+namespace unless you pass --all-namespaces.
+
+Uninitialized objects are not shown unless --include-uninitialized is passed.
+
+By specifying the output as 'template' and providing a Go template as the value of the --template flag, you can filter
+the attributes of the fetched resources.
+
+Use "kubectl api-resources" for a complete list of supported resources.
+
+Examples:
+  # List all pods in ps output format.
+  kubectl get pods
+
+  # List all pods in ps output format with more information (such as node name).
+  kubectl get pods -o wide
+
+  # List a single replication controller with specified NAME in ps output format.
+  kubectl get replicationcontroller web
+
+  # List deployments in JSON output format, in the "v1" version of the "apps" API group:
+  kubectl get deployments.v1.apps -o json
+
+  # List a single pod in JSON output format.
+  kubectl get -o json pod web-pod-13je7
+
+  # List a pod identified by type and name specified in "pod.yaml" in JSON output format.
+  kubectl get -f pod.yaml -o json
+
+  # Return only the phase value of the specified pod.
+  kubectl get -o template pod/web-pod-13je7 --template={{.status.phase}}
+
+  # List all replication controllers and services together in ps output format.
+  kubectl get rc,services
+
+  # List one or more resources by their type and names.
+  kubectl get rc/web service/frontend pods/web-pod-13je7
+
+Options:
+      --all-namespaces=false: If present, list the requested object(s) across all namespaces. Namespace in current
+context is ignored even if specified with --namespace.
+      --allow-missing-template-keys=true: If true, ignore any errors in templates when a field or map key is missing in
+the template. Only applies to golang and jsonpath output formats.
+      --chunk-size=500: Return large lists in chunks rather than all at once. Pass 0 to disable. This flag is beta and
+may change in the future.
+      --export=false: If true, use 'export' for the resources.  Exported resources are stripped of cluster-specific
+information.
+      --field-selector='': Selector (field query) to filter on, supports '=', '==', and '!='.(e.g. --field-selector
+key1=value1,key2=value2). The server only supports a limited number of field queries per type.
+  -f, --filename=[]: Filename, directory, or URL to files identifying the resource to get from a server.
+      --ignore-not-found=false: If the requested object does not exist the command will return exit code 0.
+      --include-uninitialized=false: If true, the kubectl command applies to uninitialized objects. If explicitly set to
+false, this flag overrides other flags that make the kubectl commands apply to uninitialized objects, e.g., "--all".
+Objects with empty metadata.initializers are regarded as initialized.
+  -L, --label-columns=[]: Accepts a comma separated list of labels that are going to be presented as columns. Names are
+case-sensitive. You can also use multiple flag options like -L label1 -L label2...
+      --no-headers=false: When using the default or custom-column output format, don't print headers (default print
+headers).
+  -o, --output='': Output format. One of:
+json|yaml|wide|name|custom-columns=...|custom-columns-file=...|go-template=...|go-template-file=...|jsonpath=...|jsonpath-file=...
+See custom columns [http://kubernetes.io/docs/user-guide/kubectl-overview/#custom-columns], golang template
+[http://golang.org/pkg/text/template/#pkg-overview] and jsonpath template
+[http://kubernetes.io/docs/user-guide/jsonpath].
+      --raw='': Raw URI to request from the server.  Uses the transport specified by the kubeconfig file.
+  -R, --recursive=false: Process the directory used in -f, --filename recursively. Useful when you want to manage
+related manifests organized within the same directory.
+  -l, --selector='': Selector (label query) to filter on, supports '=', '==', and '!='.(e.g. -l key1=value1,key2=value2)
+      --server-print=true: If true, have the server return the appropriate table output. Supports extension APIs and
+CRDs.
+      --show-kind=false: If present, list the resource type for the requested object(s).
+      --show-labels=false: When printing, show all labels as the last column (default hide labels column)
+      --sort-by='': If non-empty, sort list types using this field specification.  The field specification is expressed
+as a JSONPath expression (e.g. '{.metadata.name}'). The field in the API resource specified by this JSONPath expression
+must be an integer or a string.
+      --template='': Template string or path to template file to use when -o=go-template, -o=go-template-file. The
+template format is golang templates [http://golang.org/pkg/text/template/#pkg-overview].
+  -w, --watch=false: After listing/getting the requested object, watch for changes. Uninitialized objects are excluded
+if no object name is provided.
+      --watch-only=false: Watch for changes to the requested object(s), without listing/getting first.
+
+Usage:
+  kubectl get
+[(-o|--output=)json|yaml|wide|custom-columns=...|custom-columns-file=...|go-template=...|go-template-file=...|jsonpath=...|jsonpath-file=...]
+(TYPE[.VERSION][.GROUP] [NAME | -l label] | TYPE[.VERSION][.GROUP]/NAME ...) [flags] [options]
+
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods
+NAME                                   READY   STATUS    RESTARTS   AGE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running   0          1m
+SEVELUCH-M-R0YB:~ seveluch$ kubenetes get pods kubernetes-bootcamp-5c69669756-246td
+-bash: kubenetes: command not found
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods kubernetes-bootcamp-5c69669756-246td
+NAME                                   READY   STATUS    RESTARTS   AGE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running   0          1m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl proxy --help
+Creates a proxy server or application-level gateway between localhost and the Kubernetes API Server. It also allows
+serving static content over specified HTTP path. All incoming data enters through one port and gets forwarded to the
+remote kubernetes API Server port, except for the path matching the static content path.
+
+Examples:
+  # To proxy all of the kubernetes api and nothing else, use:
+
+  $ kubectl proxy --api-prefix=/
+
+  # To proxy only part of the kubernetes api and also some static files:
+
+  $ kubectl proxy --www=/my/files --www-prefix=/static/ --api-prefix=/api/
+
+  # The above lets you 'curl localhost:8001/api/v1/pods'.
+
+  # To proxy the entire kubernetes api at a different root, use:
+
+  $ kubectl proxy --api-prefix=/custom/
+
+  # The above lets you 'curl localhost:8001/custom/api/v1/pods'
+
+  # Run a proxy to kubernetes apiserver on port 8011, serving static content from ./local/www/
+  kubectl proxy --port=8011 --www=./local/www/
+
+  # Run a proxy to kubernetes apiserver on an arbitrary local port.
+  # The chosen port for the server will be output to stdout.
+  kubectl proxy --port=0
+
+  # Run a proxy to kubernetes apiserver, changing the api prefix to k8s-api
+  # This makes e.g. the pods api available at localhost:8001/k8s-api/v1/pods/
+  kubectl proxy --api-prefix=/k8s-api
+
+Options:
+      --accept-hosts='^localhost$,^127\.0\.0\.1$,^\[::1\]$': Regular expression for hosts that the proxy should accept.
+      --accept-paths='^.*': Regular expression for paths that the proxy should accept.
+      --address='127.0.0.1': The IP address on which to serve on.
+      --api-prefix='/': Prefix to serve the proxied API under.
+      --disable-filter=false: If true, disable request filtering in the proxy. This is dangerous, and can leave you
+vulnerable to XSRF attacks, when used with an accessible port.
+      --keepalive=0s: keepalive specifies the keep-alive period for an active network connection. Set to 0 to disable
+keepalive.
+  -p, --port=8001: The port on which to run the proxy. Set to 0 to pick a random port.
+      --reject-methods='^$': Regular expression for HTTP methods that the proxy should reject (example
+--reject-methods='POST,PUT,PATCH').
+      --reject-paths='^/api/.*/pods/.*/exec,^/api/.*/pods/.*/attach': Regular expression for paths that the proxy should
+reject. Paths specified here will be rejected even accepted by --accept-paths.
+  -u, --unix-socket='': Unix socket on which to run the proxy.
+  -w, --www='': Also serve static files from the given directory under the specified prefix.
+  -P, --www-prefix='/static/': Prefix to serve static files under, if static file directory is specified.
+
+Usage:
+  kubectl proxy [--port=PORT] [--www=static-dir] [--www-prefix=prefix] [--api-prefix=prefix] [options]
+
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+SEVELUCH-M-R0YB:~ seveluch$ kubectl proxy &
+[1] 24182
+SEVELUCH-M-R0YB:~ seveluch$ F1105 08:25:23.831141   24182 proxy.go:158] listen tcp 127.0.0.1:8001: bind: address already in use
+
+[1]+  Exit 255                kubectl proxy
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$ kubectl proxy -p 8100 &
+[1] 24288
+SEVELUCH-M-R0YB:~ seveluch$ Starting to serve on 127.0.0.1:8100
+
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get services
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   9m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get namespaces
+NAME          STATUS   AGE
+default       Active   10m
+kube-public   Active   9m
+kube-system   Active   10m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get proxy
+error: the server doesn't have a resource type "proxy"
+SEVELUCH-M-R0YB:~ seveluch$ kubectl proxy --help
+Creates a proxy server or application-level gateway between localhost and the Kubernetes API Server. It also allows
+serving static content over specified HTTP path. All incoming data enters through one port and gets forwarded to the
+remote kubernetes API Server port, except for the path matching the static content path.
+
+Examples:
+  # To proxy all of the kubernetes api and nothing else, use:
+
+  $ kubectl proxy --api-prefix=/
+
+  # To proxy only part of the kubernetes api and also some static files:
+
+  $ kubectl proxy --www=/my/files --www-prefix=/static/ --api-prefix=/api/
+
+  # The above lets you 'curl localhost:8001/api/v1/pods'.
+
+  # To proxy the entire kubernetes api at a different root, use:
+
+  $ kubectl proxy --api-prefix=/custom/
+
+  # The above lets you 'curl localhost:8001/custom/api/v1/pods'
+
+  # Run a proxy to kubernetes apiserver on port 8011, serving static content from ./local/www/
+  kubectl proxy --port=8011 --www=./local/www/
+
+  # Run a proxy to kubernetes apiserver on an arbitrary local port.
+  # The chosen port for the server will be output to stdout.
+  kubectl proxy --port=0
+
+  # Run a proxy to kubernetes apiserver, changing the api prefix to k8s-api
+  # This makes e.g. the pods api available at localhost:8001/k8s-api/v1/pods/
+  kubectl proxy --api-prefix=/k8s-api
+
+Options:
+      --accept-hosts='^localhost$,^127\.0\.0\.1$,^\[::1\]$': Regular expression for hosts that the proxy should accept.
+      --accept-paths='^.*': Regular expression for paths that the proxy should accept.
+      --address='127.0.0.1': The IP address on which to serve on.
+      --api-prefix='/': Prefix to serve the proxied API under.
+      --disable-filter=false: If true, disable request filtering in the proxy. This is dangerous, and can leave you
+vulnerable to XSRF attacks, when used with an accessible port.
+      --keepalive=0s: keepalive specifies the keep-alive period for an active network connection. Set to 0 to disable
+keepalive.
+  -p, --port=8001: The port on which to run the proxy. Set to 0 to pick a random port.
+      --reject-methods='^$': Regular expression for HTTP methods that the proxy should reject (example
+--reject-methods='POST,PUT,PATCH').
+      --reject-paths='^/api/.*/pods/.*/exec,^/api/.*/pods/.*/attach': Regular expression for paths that the proxy should
+reject. Paths specified here will be rejected even accepted by --accept-paths.
+  -u, --unix-socket='': Unix socket on which to run the proxy.
+  -w, --www='': Also serve static files from the given directory under the specified prefix.
+  -P, --www-prefix='/static/': Prefix to serve static files under, if static file directory is specified.
+
+Usage:
+  kubectl proxy [--port=PORT] [--www=static-dir] [--www-prefix=prefix] [--api-prefix=prefix] [options]
+
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+
+
+
+
+                    kubernetes-bootcamp
+Namespace:                default
+Labels:                   run=kubernetes-bootcamp
+Annotations:              <none>
+Selector:                 run=kubernetes-bootcamp
+Type:                     NodePort
+IP:                       10.106.12.157
+Port:                     <unset>  8080/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  32748/TCP
+Endpoints:                172.17.0.5:8080
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe services
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP:                10.96.0.1 ###cluster ip
+Port:              https  443/TCP
+TargetPort:        8443/TCP
+Endpoints:         172.16.2.130:8443 ###### IP address of vmnet on VMware fusion
+Session Affinity:  ClientIP
+Events:            <none>
+
+
+Name:                     kubernetes-bootcamp
+Namespace:                default
+Labels:                   run=kubernetes-bootcamp
+Annotations:              <none>
+Selector:                 run=kubernetes-bootcamp
+Type:                     NodePort
+IP:                       10.106.12.157
+Port:                     <unset>  8080/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  32748/TCP
+Endpoints:                172.17.0.5:8080   ##docker network
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get services
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   9m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get namespaces
+NAME          STATUS   AGE
+default       Active   10m
+kube-public   Active   9m
+kube-system   Active   10m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get proxy
+error: the server doesn't have a resource type "proxy"
+SEVELUCH-M-R0YB:~ seveluch$ kubectl proxy --help
+Creates a proxy server or application-level gateway between localhost and the Kubernetes API Server. It also allows
+serving static content over specified HTTP path. All incoming data enters through one port and gets forwarded to the
+remote kubernetes API Server port, except for the path matching the static content path.
+
+Examples:
+  # To proxy all of the kubernetes api and nothing else, use:
+
+  $ kubectl proxy --api-prefix=/
+
+  # To proxy only part of the kubernetes api and also some static files:
+
+  $ kubectl proxy --www=/my/files --www-prefix=/static/ --api-prefix=/api/
+
+  # The above lets you 'curl localhost:8001/api/v1/pods'.
+
+  # To proxy the entire kubernetes api at a different root, use:
+
+  $ kubectl proxy --api-prefix=/custom/
+
+  # The above lets you 'curl localhost:8001/custom/api/v1/pods'
+
+  # Run a proxy to kubernetes apiserver on port 8011, serving static content from ./local/www/
+  kubectl proxy --port=8011 --www=./local/www/
+
+  # Run a proxy to kubernetes apiserver on an arbitrary local port.
+  # The chosen port for the server will be output to stdout.
+  kubectl proxy --port=0
+
+  # Run a proxy to kubernetes apiserver, changing the api prefix to k8s-api
+  # This makes e.g. the pods api available at localhost:8001/k8s-api/v1/pods/
+  kubectl proxy --api-prefix=/k8s-api
+
+Options:
+      --accept-hosts='^localhost$,^127\.0\.0\.1$,^\[::1\]$': Regular expression for hosts that the proxy should accept.
+      --accept-paths='^.*': Regular expression for paths that the proxy should accept.
+      --address='127.0.0.1': The IP address on which to serve on.
+      --api-prefix='/': Prefix to serve the proxied API under.
+      --disable-filter=false: If true, disable request filtering in the proxy. This is dangerous, and can leave you
+vulnerable to XSRF attacks, when used with an accessible port.
+      --keepalive=0s: keepalive specifies the keep-alive period for an active network connection. Set to 0 to disable
+keepalive.
+  -p, --port=8001: The port on which to run the proxy. Set to 0 to pick a random port.
+      --reject-methods='^$': Regular expression for HTTP methods that the proxy should reject (example
+--reject-methods='POST,PUT,PATCH').
+      --reject-paths='^/api/.*/pods/.*/exec,^/api/.*/pods/.*/attach': Regular expression for paths that the proxy should
+reject. Paths specified here will be rejected even accepted by --accept-paths.
+  -u, --unix-socket='': Unix socket on which to run the proxy.
+  -w, --www='': Also serve static files from the given directory under the specified prefix.
+  -P, --www-prefix='/static/': Prefix to serve static files under, if static file directory is specified.
+
+Usage:
+  kubectl proxy [--port=PORT] [--www=static-dir] [--www-prefix=prefix] [--api-prefix=prefix] [options]
+
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+Display all 1409 possibilities? (y or n)
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$ curl http://localhost:8100/version
+{
+  "major": "1",
+  "minor": "10",
+  "gitVersion": "v1.10.0",
+  "gitCommit": "fc32d2f3698e36b93322a3465f63a14e9f0eaead",
+  "gitTreeState": "clean",
+  "buildDate": "2018-03-26T16:44:10Z",
+  "goVersion": "go1.9.3",
+  "compiler": "gc",
+  "platform": "linux/amd64"
+}SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$ export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
+SEVELUCH-M-R0YB:~ seveluch$ echo $POD_NAME
+kubernetes-bootcamp-5c69669756-246td
+SEVELUCH-M-R0YB:~ seveluch$ curl http://localhost:8100/api/v1/namespaces/default/pods/$POD_NAME/proxy/
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-246td | v=1
+SEVELUCH-M-R0YB:~ seveluch$ curl http://localhost:8100/api/v1/namespaces/default/pods
+{
+  "kind": "PodList",
+  "apiVersion": "v1",
+  "metadata": {
+    "selfLink": "/api/v1/namespaces/default/pods",
+    "resourceVersion": "1285"
+  },
+  "items": [
+    {
+      "metadata": {
+        "name": "kubernetes-bootcamp-5c69669756-246td",
+        "generateName": "kubernetes-bootcamp-5c69669756-",
+        "namespace": "default",
+        "selfLink": "/api/v1/namespaces/default/pods/kubernetes-bootcamp-5c69669756-246td",
+        "uid": "f62bd60d-e0d3-11e8-93d0-000c29051a5b",
+        "resourceVersion": "972",
+        "creationTimestamp": "2018-11-05T08:22:40Z",
+        "labels": {
+          "pod-template-hash": "1725225312",
+          "run": "kubernetes-bootcamp"
+        },
+        "ownerReferences": [
+          {
+            "apiVersion": "extensions/v1beta1",
+            "kind": "ReplicaSet",
+            "name": "kubernetes-bootcamp-5c69669756",
+            "uid": "f628e789-e0d3-11e8-93d0-000c29051a5b",
+            "controller": true,
+            "blockOwnerDeletion": true
+          }
+        ]
+      },
+      "spec": {
+        "volumes": [
+          {
+            "name": "default-token-9gnmw",
+            "secret": {
+              "secretName": "default-token-9gnmw",
+              "defaultMode": 420
+            }
+          }
+        ],
+        "containers": [
+          {
+            "name": "kubernetes-bootcamp",
+            "image": "gcr.io/google-samples/kubernetes-bootcamp:v1",
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {
+
+            },
+            "volumeMounts": [
+              {
+                "name": "default-token-9gnmw",
+                "readOnly": true,
+                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+              }
+            ],
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "serviceAccountName": "default",
+        "serviceAccount": "default",
+        "nodeName": "minikube",
+        "securityContext": {
+
+        },
+        "schedulerName": "default-scheduler",
+        "tolerations": [
+          {
+            "key": "node.kubernetes.io/not-ready",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          },
+          {
+            "key": "node.kubernetes.io/unreachable",
+            "operator": "Exists",
+            "effect": "NoExecute",
+            "tolerationSeconds": 300
+          }
+        ]
+      },
+      "status": {
+        "phase": "Running",
+        "conditions": [
+          {
+            "type": "Initialized",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2018-11-05T08:22:40Z"
+          },
+          {
+            "type": "Ready",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2018-11-05T08:22:56Z"
+          },
+          {
+            "type": "PodScheduled",
+            "status": "True",
+            "lastProbeTime": null,
+            "lastTransitionTime": "2018-11-05T08:22:40Z"
+          }
+        ],
+        "hostIP": "172.16.2.130",
+        "podIP": "172.17.0.5",
+        "startTime": "2018-11-05T08:22:40Z",
+        "containerStatuses": [
+          {
+            "name": "kubernetes-bootcamp",
+            "state": {
+              "running": {
+                "startedAt": "2018-11-05T08:22:55Z"
+              }
+            },
+            "lastState": {
+
+            },
+            "ready": true,
+            "restartCount": 0,
+            "image": "gcr.io/google-samples/kubernetes-bootcamp:v1",
+            "imageID": "docker-pullable://gcr.io/google-samples/kubernetes-bootcamp@sha256:0d6b8ee63bb57c5f5b6156f446b3bc3b3c143d233037f3a2f00e279c8fcc64af",
+            "containerID": "docker://5ffa0c7941766970f094049b36bc17266180e25047200f0d3c3e42bf4c5831d1"
+          }
+        ],
+        "qosClass": "BestEffort"
+      }
+    }
+  ]
+}SEVELUCH-M-R0YB:~ seveluch$
+Display all 1409 possibilities? (y or n)
+SEVELUCH-M-R0YB:~ seveluch$ curl http://localhost:8100/api/v1/namespaces
+{
+  "kind": "NamespaceList",
+  "apiVersion": "v1",
+  "metadata": {
+    "selfLink": "/api/v1/namespaces",
+    "resourceVersion": "1329"
+  },
+  "items": [
+    {
+      "metadata": {
+        "name": "default",
+        "selfLink": "/api/v1/namespaces/default",
+        "uid": "f25804a3-e0d2-11e8-892e-000c29051a5b",
+        "resourceVersion": "4",
+        "creationTimestamp": "2018-11-05T08:15:24Z"
+      },
+      "spec": {
+        "finalizers": [
+          "kubernetes"
+        ]
+      },
+      "status": {
+        "phase": "Active"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-public",
+        "selfLink": "/api/v1/namespaces/kube-public",
+        "uid": "f4c1b710-e0d2-11e8-892e-000c29051a5b",
+        "resourceVersion": "23",
+        "creationTimestamp": "2018-11-05T08:15:28Z"
+      },
+      "spec": {
+        "finalizers": [
+          "kubernetes"
+        ]
+      },
+      "status": {
+        "phase": "Active"
+      }
+    },
+    {
+      "metadata": {
+        "name": "kube-system",
+        "selfLink": "/api/v1/namespaces/kube-system",
+        "uid": "f25c58e7-e0d2-11e8-892e-000c29051a5b",
+        "resourceVersion": "12",
+        "creationTimestamp": "2018-11-05T08:15:24Z",
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Namespace\",\"metadata\":{\"annotations\":{},\"name\":\"kube-system\",\"namespace\":\"\"}}\n"
+        }
+      },
+      "spec": {
+        "finalizers": [
+          "kubernetes"
+        ]
+      },
+      "status": {
+        "phase": "Active"
+      }
+    }
+  ]
+}SEVELUCH-M-R0YB:~ seveluch$ curl http://localhost:8100/api/v1/namespaces/default/pods/$POD_NAME/proxy/
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-246td | v=1
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe pods
+Name:           kubernetes-bootcamp-5c69669756-246td
+Namespace:      default
+Node:           minikube/172.16.2.130
+Start Time:     Mon, 05 Nov 2018 13:52:40 +0530
+Labels:         pod-template-hash=1725225312
+                run=kubernetes-bootcamp
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.5
+Controlled By:  ReplicaSet/kubernetes-bootcamp-5c69669756
+Containers:
+  kubernetes-bootcamp:
+    Container ID:   docker://5ffa0c7941766970f094049b36bc17266180e25047200f0d3c3e42bf4c5831d1
+    Image:          gcr.io/google-samples/kubernetes-bootcamp:v1
+    Image ID:       docker-pullable://gcr.io/google-samples/kubernetes-bootcamp@sha256:0d6b8ee63bb57c5f5b6156f446b3bc3b3c143d233037f3a2f00e279c8fcc64af
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 05 Nov 2018 13:52:55 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9gnmw (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-9gnmw:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-9gnmw
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age        From               Message
+  ----    ------                 ----       ----               -------
+  Normal  Scheduled              <invalid>  default-scheduler  Successfully assigned kubernetes-bootcamp-5c69669756-246td to minikube
+  Normal  SuccessfulMountVolume  <invalid>  kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-9gnmw"
+  Normal  Pulling                <invalid>  kubelet, minikube  pulling image "gcr.io/google-samples/kubernetes-bootcamp:v1"
+  Normal  Pulled                 <invalid>  kubelet, minikube  Successfully pulled image "gcr.io/google-samples/kubernetes-bootcamp:v1"
+  Normal  Created                <invalid>  kubelet, minikube  Created container
+  Normal  Started                <invalid>  kubelet, minikube  Started container
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe deployments
+Name:                   kubernetes-bootcamp
+Namespace:              default
+CreationTimestamp:      Mon, 05 Nov 2018 13:52:40 +0530
+Labels:                 run=kubernetes-bootcamp
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               run=kubernetes-bootcamp
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  run=kubernetes-bootcamp
+  Containers:
+   kubernetes-bootcamp:
+    Image:        gcr.io/google-samples/kubernetes-bootcamp:v1
+    Port:         8080/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   kubernetes-bootcamp-5c69669756 (1/1 replicas created)
+Events:
+  Type    Reason             Age        From                   Message
+  ----    ------             ----       ----                   -------
+  Normal  ScalingReplicaSet  <invalid>  deployment-controller  Scaled up replica set kubernetes-bootcamp-5c69669756 to 1
+SEVELUCH-M-R0YB:~ seveluch$ kubectl logs kubernetes-bootcamp
+Error from server (NotFound): pods "kubernetes-bootcamp" not found
+SEVELUCH-M-R0YB:~ seveluch$ kubectl logs kubernetes-bootcamp-5c69669756-246td
+Kubernetes Bootcamp App Started At: 2018-11-05T08:22:55.802Z | Running On:  kubernetes-bootcamp-5c69669756-246td
+
+Running On: kubernetes-bootcamp-5c69669756-246td | Total Requests: 1 | App Uptime: 272.524 seconds | Log Time: 2018-11-05T08:27:28.326Z
+Running On: kubernetes-bootcamp-5c69669756-246td | Total Requests: 2 | App Uptime: 341.017 seconds | Log Time: 2018-11-05T08:28:36.819Z
+SEVELUCH-M-R0YB:~ seveluch$ kubectl exec kubernetes-bootcamp-5c69669756-246td env
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=kubernetes-bootcamp-5c69669756-246td
+KUBERNETES_SERVICE_PORT_HTTPS=443
+KUBERNETES_PORT=tcp://10.96.0.1:443
+KUBERNETES_PORT_443_TCP=tcp://10.96.0.1:443
+KUBERNETES_PORT_443_TCP_PROTO=tcp
+KUBERNETES_PORT_443_TCP_PORT=443
+KUBERNETES_PORT_443_TCP_ADDR=10.96.0.1
+KUBERNETES_SERVICE_HOST=10.96.0.1
+KUBERNETES_SERVICE_PORT=443
+NPM_CONFIG_LOGLEVEL=info
+NODE_VERSION=6.3.1
+HOME=/root
+SEVELUCH-M-R0YB:~ seveluch$ kubectl exec kubernetes-bootcamp-5c69669756-246td ls
+bin
+boot
+core
+dev
+etc
+home
+lib
+lib64
+media
+mnt
+opt
+proc
+root
+run
+sbin
+server.js
+srv
+sys
+tmp
+usr
+var
+SEVELUCH-M-R0YB:~ seveluch$ kubectl exec -it kubernetes-bootcamp-5c69669756-246td bash
+root@kubernetes-bootcamp-5c69669756-246td:/#
+root@kubernetes-bootcamp-5c69669756-246td:/#
+root@kubernetes-bootcamp-5c69669756-246td:/# pwd
+/
+root@kubernetes-bootcamp-5c69669756-246td:/# ls
+bin   core  etc   lib	 media	opt   root  sbin       srv  tmp  var
+boot  dev   home  lib64  mnt	proc  run   server.js  sys  usr
+root@kubernetes-bootcamp-5c69669756-246td:/# hostname
+kubernetes-bootcamp-5c69669756-246td
+root@kubernetes-bootcamp-5c69669756-246td:/# ifconfig
+bash: ifconfig: command not found
+root@kubernetes-bootcamp-5c69669756-246td:/# ifconfig -a
+bash: ifconfig: command not found
+root@kubernetes-bootcamp-5c69669756-246td:/# route -n
+bash: route: command not found
+root@kubernetes-bootcamp-5c69669756-246td:/# ping www.google.com
+PING www.google.com (172.217.167.164): 56 data bytes
+64 bytes from 172.217.167.164: icmp_seq=0 ttl=127 time=22.319 ms
+64 bytes from 172.217.167.164: icmp_seq=1 ttl=127 time=20.782 ms
+64 bytes from 172.217.167.164: icmp_seq=2 ttl=127 time=22.529 ms
+^C--- www.google.com ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 20.782/21.877/22.529/0.779 ms
+root@kubernetes-bootcamp-5c69669756-246td:/#
+root@kubernetes-bootcamp-5c69669756-246td:/#
+root@kubernetes-bootcamp-5c69669756-246td:/# exit
+exit
+SEVELUCH-M-R0YB:~ seveluch$ kubectl exec -it kubernetes-bootcamp-5c69669756-246td bash
+root@kubernetes-bootcamp-5c69669756-246td:/# curl localhost:8080
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-246td | v=1
+root@kubernetes-bootcamp-5c69669756-246td:/# curl localhost:8100
+curl: (7) Failed to connect to localhost port 8100: Connection refused
+root@kubernetes-bootcamp-5c69669756-246td:/# exit
+exit
+command terminated with exit code 7
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get services
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   17m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl expose deployment/kubernetes-bootcamp --type="NodePort" --port 8080
+service/kubernetes-bootcamp exposed
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get services
+NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP          18m
+kubernetes-bootcamp   NodePort    10.106.12.157   <none>        8080:32748/TCP   3s
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe services
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP:                10.96.0.1
+Port:              https  443/TCP
+TargetPort:        8443/TCP
+Endpoints:         172.16.2.130:8443
+Session Affinity:  ClientIP
+Events:            <none>
+
+
+Name:                     kubernetes-bootcamp
+Namespace:                default
+Labels:                   run=kubernetes-bootcamp
+Annotations:              <none>
+Selector:                 run=kubernetes-bootcamp
+Type:                     NodePort
+IP:                       10.106.12.157
+Port:                     <unset>  8080/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  32748/TCP
+Endpoints:                172.17.0.5:8080
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+SEVELUCH-M-R0YB:~ seveluch$ ifconfig
+lo0: flags=8049<UP,LOOPBACK,RUNNING,MULTICAST> mtu 16384
+	options=1203<RXCSUM,TXCSUM,TXSTATUS,SW_TIMESTAMP>
+	inet 127.0.0.1 netmask 0xff000000
+	inet6 ::1 prefixlen 128
+	inet6 fe80::1%lo0 prefixlen 64 scopeid 0x1
+	nd6 options=201<PERFORMNUD,DAD>
+gif0: flags=8010<POINTOPOINT,MULTICAST> mtu 1280
+stf0: flags=0<> mtu 1280
+XHC20: flags=0<> mtu 0
+XHC1: flags=0<> mtu 0
+XHC0: flags=0<> mtu 0
+en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	ether 88:e9:fe:6a:bc:b7
+	inet6 fe80::186d:2917:33bb:e25a%en0 prefixlen 64 secured scopeid 0x8
+	inet 173.39.28.54 netmask 0xfffffc00 broadcast 173.39.31.255
+	nd6 options=201<PERFORMNUD,DAD>
+	media: autoselect
+	status: active
+p2p0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> mtu 2304
+	ether 0a:e9:fe:6a:bc:b7
+	media: autoselect
+	status: inactive
+awdl0: flags=8943<UP,BROADCAST,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1484
+	ether ee:77:36:66:e0:6e
+	inet6 fe80::ec77:36ff:fe66:e06e%awdl0 prefixlen 64 scopeid 0xa
+	nd6 options=201<PERFORMNUD,DAD>
+	media: autoselect
+	status: active
+en3: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
+	options=60<TSO4,TSO6>
+	ether 7a:00:54:c1:56:05
+	media: autoselect <full-duplex>
+	status: inactive
+en4: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
+	options=60<TSO4,TSO6>
+	ether 7a:00:54:c1:56:04
+	media: autoselect <full-duplex>
+	status: inactive
+en1: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
+	options=60<TSO4,TSO6>
+	ether 7a:00:54:c1:56:01
+	media: autoselect <full-duplex>
+	status: inactive
+en2: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500
+	options=60<TSO4,TSO6>
+	ether 7a:00:54:c1:56:00
+	media: autoselect <full-duplex>
+	status: inactive
+bridge0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	options=63<RXCSUM,TXCSUM,TSO4,TSO6>
+	ether 7a:00:54:c1:56:01
+	Configuration:
+		id 0:0:0:0:0:0 priority 0 hellotime 0 fwddelay 0
+		maxage 0 holdcnt 0 proto stp maxaddr 100 timeout 1200
+		root id 0:0:0:0:0:0 priority 0 ifcost 0 port 0
+		ipfilter disabled flags 0x2
+	member: en1 flags=3<LEARNING,DISCOVER>
+	        ifmaxaddr 0 port 13 priority 0 path cost 0
+	member: en2 flags=3<LEARNING,DISCOVER>
+	        ifmaxaddr 0 port 14 priority 0 path cost 0
+	member: en3 flags=3<LEARNING,DISCOVER>
+	        ifmaxaddr 0 port 11 priority 0 path cost 0
+	member: en4 flags=3<LEARNING,DISCOVER>
+	        ifmaxaddr 0 port 12 priority 0 path cost 0
+	nd6 options=201<PERFORMNUD,DAD>
+	media: <unknown type>
+	status: inactive
+utun0: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 2000
+	inet6 fe80::1e8a:df06:7cb1:d760%utun0 prefixlen 64 scopeid 0x10
+	nd6 options=201<PERFORMNUD,DAD>
+vboxnet0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	ether 0a:00:27:00:00:00
+	inet 192.168.99.1 netmask 0xffffff00 broadcast 192.168.99.255
+en5: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	ether ac:de:48:00:11:22
+	inet6 fe80::aede:48ff:fe00:1122%en5 prefixlen 64 scopeid 0x7
+	nd6 options=201<PERFORMNUD,DAD>
+	media: autoselect
+	status: active
+vmnet1: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	ether 00:50:56:c0:00:01
+	inet 192.168.197.1 netmask 0xffffff00 broadcast 192.168.197.255
+vmnet8: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	ether 00:50:56:c0:00:08
+	inet 172.16.2.1 netmask 0xffffff00 broadcast 172.16.2.255
+SEVELUCH-M-R0YB:~ seveluch$ route -n
+usage: route [-dnqtv] command [[modifiers] args]
+SEVELUCH-M-R0YB:~ seveluch$ route
+usage: route [-dnqtv] command [[modifiers] args]
+SEVELUCH-M-R0YB:~ seveluch$ iproute
+-bash: iproute: command not found
+SEVELUCH-M-R0YB:~ seveluch$ ip route
+-bash: ip: command not found
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$ who am i
+seveluch ttys000  Nov  5 08:07
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe services
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP:                10.96.0.1
+Port:              https  443/TCP
+TargetPort:        8443/TCP
+Endpoints:         172.16.2.130:8443
+Session Affinity:  ClientIP
+Events:            <none>
+
+
+Name:                     kubernetes-bootcamp
+Namespace:                default
+Labels:                   run=kubernetes-bootcamp
+Annotations:              <none>
+Selector:                 run=kubernetes-bootcamp
+Type:                     NodePort
+IP:                       10.106.12.157
+Port:                     <unset>  8080/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  32748/TCP
+Endpoints:                172.17.0.5:8080
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe services/kubernetes-bootcamp
+Name:                     kubernetes-bootcamp
+Namespace:                default
+Labels:                   run=kubernetes-bootcamp
+Annotations:              <none>
+Selector:                 run=kubernetes-bootcamp
+Type:                     NodePort
+IP:                       10.106.12.157
+Port:                     <unset>  8080/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  32748/TCP
+Endpoints:                172.17.0.5:8080
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe services
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP:                10.96.0.1
+Port:              https  443/TCP
+TargetPort:        8443/TCP
+Endpoints:         172.16.2.130:8443
+Session Affinity:  ClientIP
+Events:            <none>
+
+
+Name:                     kubernetes-bootcamp
+Namespace:                default
+Labels:                   run=kubernetes-bootcamp
+Annotations:              <none>
+Selector:                 run=kubernetes-bootcamp
+Type:                     NodePort
+IP:                       10.106.12.157
+Port:                     <unset>  8080/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  32748/TCP
+Endpoints:                172.17.0.5:8080
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+SEVELUCH-M-R0YB:~ seveluch$ ping 172.16.2.30
+PING 172.16.2.30 (172.16.2.30): 56 data bytes
+^[Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+^[Request timeout for icmp_seq 2
+Request timeout for icmp_seq 3
+^[^C
+--- 172.16.2.30 ping statistics ---
+5 packets transmitted, 0 packets received, 100.0% packet loss
+SEVELUCH-M-R0YB:~ seveluch$ ping 172.16.2.130
+PING 172.16.2.130 (172.16.2.130): 56 data bytes
+64 bytes from 172.16.2.130: icmp_seq=0 ttl=64 time=0.202 ms
+^[64 bytes from 172.16.2.130: icmp_seq=1 ttl=64 time=0.394 ms
+64 bytes from 172.16.2.130: icmp_seq=2 ttl=64 time=0.252 ms
+64 bytes from 172.16.2.130: icmp_seq=3 ttl=64 time=0.220 ms
+^C
+--- 172.16.2.130 ping statistics ---
+4 packets transmitted, 4 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 0.202/0.267/0.394/0.075 ms
+SEVELUCH-M-R0YB:~ seveluch$ ifconfig | grep 10.106
+SEVELUCH-M-R0YB:~ seveluch$ kubectl exec -it kubernetes-bootcamp-5c69669756-246td bash
+root@kubernetes-bootcamp-5c69669756-246td:/# route -n
+bash: route: command not found
+root@kubernetes-bootcamp-5c69669756-246td:/# ifconfig
+bash: ifconfig: command not found
+root@kubernetes-bootcamp-5c69669756-246td:/# ap
+bash: ap: command not found
+root@kubernetes-bootcamp-5c69669756-246td:/# apt
+apt 1.0.9.8.3 for amd64 compiled on Mar 12 2016 13:31:17
+Usage: apt [options] command
+
+CLI for apt.
+Basic commands:
+ list - list packages based on package names
+ search - search in package descriptions
+ show - show package details
+
+ update - update list of available packages
+
+ install - install packages
+ remove  - remove packages
+
+ upgrade - upgrade the system by installing/upgrading packages
+ full-upgrade - upgrade the system by removing/installing/upgrading packages
+
+ edit-sources - edit the source information file
+root@kubernetes-bootcamp-5c69669756-246td:/# apt install net-tools
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+E: Unable to locate package net-tools
+root@kubernetes-bootcamp-5c69669756-246td:/# route -n
+bash: route: command not found
+root@kubernetes-bootcamp-5c69669756-246td:/# route -n
+bash: route: command not found
+root@kubernetes-bootcamp-5c69669756-246td:/# ip addr show
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: sit0@NONE: <NOARP> mtu 1480 qdisc noop state DOWN group default qlen 1000
+    link/sit 0.0.0.0 brd 0.0.0.0
+11: eth0@if12: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+    link/ether 02:42:ac:11:00:05 brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.5/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+root@kubernetes-bootcamp-5c69669756-246td:/# echo $minikube_ip
+
+root@kubernetes-bootcamp-5c69669756-246td:/# export NODE_PORT=$(kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}')
+bash: kubectl: command not found
+root@kubernetes-bootcamp-5c69669756-246td:/# echo NODE_PORT=$NODE_PORT
+NODE_PORT=
+root@kubernetes-bootcamp-5c69669756-246td:/# export NODE_PORT=$(kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}')exit
+bash: kubectl: command not found
+root@kubernetes-bootcamp-5c69669756-246td:/#
+root@kubernetes-bootcamp-5c69669756-246td:/#
+root@kubernetes-bootcamp-5c69669756-246td:/# exit
+exit
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$ export NODE_PORT=$(kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}')
+SEVELUCH-M-R0YB:~ seveluch$ url $(minikube ip):$NODE_PORT
+.CFUserTextEncoding  .bash_sessions/      .oracle_jre_usage/   Documents/           Public/
+.DS_Store            .cisco/              .ssh/                Downloads/           PycharmProjects/
+.Trash/              .cups/               .viminfo             Library/             sshsetup-earms
+.anyconnect          .junique/            .vnc/                Movies/
+.atom/               .kube/               Applications/        Music/
+.aws/                .matplotlib/         Box Sync/            MyJabberFiles/
+.bash_history        .minikube/           Desktop/             Pictures/
+SEVELUCH-M-R0YB:~ seveluch$ url $(minikube ip):$NODE_PORT
+.CFUserTextEncoding  .bash_sessions/      .oracle_jre_usage/   Documents/           Public/
+.DS_Store            .cisco/              .ssh/                Downloads/           PycharmProjects/
+.Trash/              .cups/               .viminfo             Library/             sshsetup-earms
+.anyconnect          .junique/            .vnc/                Movies/
+.atom/               .kube/               Applications/        Music/
+.aws/                .matplotlib/         Box Sync/            MyJabberFiles/
+.bash_history        .minikube/           Desktop/             Pictures/
+SEVELUCH-M-R0YB:~ seveluch$ url $(minikube ip):$NODE_PORT
+.CFUserTextEncoding  .bash_sessions/      .oracle_jre_usage/   Documents/           Public/
+.DS_Store            .cisco/              .ssh/                Downloads/           PycharmProjects/
+.Trash/              .cups/               .viminfo             Library/             sshsetup-earms
+.anyconnect          .junique/            .vnc/                Movies/
+.atom/               .kube/               Applications/        Music/
+.aws/                .matplotlib/         Box Sync/            MyJabberFiles/
+.bash_history        .minikube/           Desktop/             Pictures/
+SEVELUCH-M-R0YB:~ seveluch$ url $(minikube ip):$NODE_PORT
+.CFUserTextEncoding  .bash_sessions/      .oracle_jre_usage/   Documents/           Public/
+.DS_Store            .cisco/              .ssh/                Downloads/           PycharmProjects/
+.Trash/              .cups/               .viminfo             Library/             sshsetup-earms
+.anyconnect          .junique/            .vnc/                Movies/
+.atom/               .kube/               Applications/        Music/
+.aws/                .matplotlib/         Box Sync/            MyJabberFiles/
+.bash_history        .minikube/           Desktop/             Pictures/
+SEVELUCH-M-R0YB:~ seveluch$ url $(minikube ip):$NODE_PORT
+.CFUserTextEncoding  .bash_sessions/      .oracle_jre_usage/   Documents/           Public/
+.DS_Store            .cisco/              .ssh/                Downloads/           PycharmProjects/
+.Trash/              .cups/               .viminfo             Library/             sshsetup-earms
+.anyconnect          .junique/            .vnc/                Movies/
+.atom/               .kube/               Applications/        Music/
+.aws/                .matplotlib/         Box Sync/            MyJabberFiles/
+.bash_history        .minikube/           Desktop/             Pictures/
+SEVELUCH-M-R0YB:~ seveluch$ curl $(minikube ip):$NODE_PORT
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-246td | v=1
+SEVELUCH-M-R0YB:~ seveluch$ echo $NODE_PORT
+32748
+SEVELUCH-M-R0YB:~ seveluch$ echo $(minikube ip)
+172.16.2.130
+SEVELUCH-M-R0YB:~ seveluch$ route -n
+usage: route [-dnqtv] command [[modifiers] args]
+SEVELUCH-M-R0YB:~ seveluch$ ip addr show
+-bash: ip: command not found
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe deplo
+error: the server doesn't have a resource type "deplo"
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe deployment
+Name:                   kubernetes-bootcamp
+Namespace:              default
+CreationTimestamp:      Mon, 05 Nov 2018 13:52:40 +0530
+Labels:                 run=kubernetes-bootcamp
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               run=kubernetes-bootcamp
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  run=kubernetes-bootcamp
+  Containers:
+   kubernetes-bootcamp:
+    Image:        gcr.io/google-samples/kubernetes-bootcamp:v1
+    Port:         8080/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   kubernetes-bootcamp-5c69669756 (1/1 replicas created)
+Events:
+  Type    Reason             Age        From                   Message
+  ----    ------             ----       ----                   -------
+  Normal  ScalingReplicaSet  <invalid>  deployment-controller  Scaled up replica set kubernetes-bootcamp-5c69669756 to 1
+SEVELUCH-M-R0YB:~ seveluch$ brew install bash-completion
+Updating Homebrew...
+==> Auto-updated Homebrew!
+Updated 1 tap (homebrew/cask).
+No changes to formulae.
+
+Warning: bash-completion 1.3_3 is already installed and up-to-date
+To reinstall 1.3_3, run `brew reinstall bash-completion`
+SEVELUCH-M-R0YB:~ seveluch$ kubectl completion bash > $(brew --prefix)/etc/bash_completion.d/kubectl
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe deployment
+Name:                   kubernetes-bootcamp
+Namespace:              default
+CreationTimestamp:      Mon, 05 Nov 2018 13:52:40 +0530
+Labels:                 run=kubernetes-bootcamp
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               run=kubernetes-bootcamp
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  run=kubernetes-bootcamp
+  Containers:
+   kubernetes-bootcamp:
+    Image:        gcr.io/google-samples/kubernetes-bootcamp:v1
+    Port:         8080/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   kubernetes-bootcamp-5c69669756 (1/1 replicas created)
+Events:
+  Type    Reason             Age        From                   Message
+  ----    ------             ----       ----                   -------
+  Normal  ScalingReplicaSet  <invalid>  deployment-controller  Scaled up replica set kubernetes-bootcamp-5c69669756 to 1
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployment
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   1         1         1            1           23m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get services
+NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP          31m
+kubernetes-bootcamp   NodePort    10.106.12.157   <none>        8080:32748/TCP   13m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods -l run=kubernetes-bootcamp
+NAME                                   READY   STATUS    RESTARTS   AGE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running   0          24m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get services -l run=kubernetes-bootcamp
+NAME                  TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes-bootcamp   NodePort   10.106.12.157   <none>        8080:32748/TCP   13m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployments -l run=kubernetes-bootcamp
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   1         1         1            1           24m
+SEVELUCH-M-R0YB:~ seveluch$ export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
+SEVELUCH-M-R0YB:~ seveluch$ echo Name of the Pod: $POD_NAME
+Name of the Pod: kubernetes-bootcamp-5c69669756-246td
+SEVELUCH-M-R0YB:~ seveluch$ kubectl label pod $POD_NAME app=v1
+pod/kubernetes-bootcamp-5c69669756-246td labeled
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployments -l run=kubernetes-bootcamp
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   1         1         1            1           25m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods -l run=kubernetes-bootcamp
+NAME                                   READY   STATUS    RESTARTS   AGE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running   0          25m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods -l app=v1
+NAME                                   READY   STATUS    RESTARTS   AGE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running   0          25m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods
+NAME                                   READY   STATUS    RESTARTS   AGE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running   0          25m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe pods
+Name:           kubernetes-bootcamp-5c69669756-246td
+Namespace:      default
+Node:           minikube/172.16.2.130
+Start Time:     Mon, 05 Nov 2018 13:52:40 +0530
+Labels:         app=v1
+                pod-template-hash=1725225312
+                run=kubernetes-bootcamp
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.5
+Controlled By:  ReplicaSet/kubernetes-bootcamp-5c69669756
+Containers:
+  kubernetes-bootcamp:
+    Container ID:   docker://5ffa0c7941766970f094049b36bc17266180e25047200f0d3c3e42bf4c5831d1
+    Image:          gcr.io/google-samples/kubernetes-bootcamp:v1
+    Image ID:       docker-pullable://gcr.io/google-samples/kubernetes-bootcamp@sha256:0d6b8ee63bb57c5f5b6156f446b3bc3b3c143d233037f3a2f00e279c8fcc64af
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 05 Nov 2018 13:52:55 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9gnmw (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-9gnmw:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-9gnmw
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age        From               Message
+  ----    ------                 ----       ----               -------
+  Normal  Scheduled              <invalid>  default-scheduler  Successfully assigned kubernetes-bootcamp-5c69669756-246td to minikube
+  Normal  SuccessfulMountVolume  <invalid>  kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-9gnmw"
+  Normal  Pulling                <invalid>  kubelet, minikube  pulling image "gcr.io/google-samples/kubernetes-bootcamp:v1"
+  Normal  Pulled                 <invalid>  kubelet, minikube  Successfully pulled image "gcr.io/google-samples/kubernetes-bootcamp:v1"
+  Normal  Created                <invalid>  kubelet, minikube  Created container
+  Normal  Started                <invalid>  kubelet, minikube  Started container
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get services
+NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP          33m
+kubernetes-bootcamp   NodePort    10.106.12.157   <none>        8080:32748/TCP   15m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe services
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP:                10.96.0.1
+Port:              https  443/TCP
+TargetPort:        8443/TCP
+Endpoints:         172.16.2.130:8443
+Session Affinity:  ClientIP
+Events:            <none>
+
+
+Name:                     kubernetes-bootcamp
+Namespace:                default
+Labels:                   run=kubernetes-bootcamp
+Annotations:              <none>
+Selector:                 run=kubernetes-bootcamp
+Type:                     NodePort
+IP:                       10.106.12.157
+Port:                     <unset>  8080/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  32748/TCP
+Endpoints:                172.17.0.5:8080
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get services/kubernetes-bootcamp
+NAME                  TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes-bootcamp   NodePort   10.106.12.157   <none>        8080:32748/TCP   16m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe services/kubernetes-bootcamp
+Name:                     kubernetes-bootcamp
+Namespace:                default
+Labels:                   run=kubernetes-bootcamp
+Annotations:              <none>
+Selector:                 run=kubernetes-bootcamp
+Type:                     NodePort
+IP:                       10.106.12.157
+Port:                     <unset>  8080/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  32748/TCP
+Endpoints:                172.17.0.5:8080
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+SEVELUCH-M-R0YB:~ seveluch$ kubectl delete services/kubernetes-bootcamp
+service "kubernetes-bootcamp" deleted
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe services/kubernetes-bootcamp
+Error from server (NotFound): services "kubernetes-bootcamp" not found
+SEVELUCH-M-R0YB:~ seveluch$ curl $(minikube ip):$NODE_PORT
+curl: (7) Failed to connect to 172.16.2.130 port 32748: Connection refused
+SEVELUCH-M-R0YB:~ seveluch$ kubectl exec -ti $POD_NAME curl localhost:8080
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-246td | v=1
+SEVELUCH-M-R0YB:~ seveluch
+
+
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$ kubectl scale deployments/kubernetes-bootcamp --replicas=4
+deployment.extensions/kubernetes-bootcamp scaled
+SEVELUCH-M-R0YB:~ seveluch$
+Display all 1409 possibilities? (y or n)
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployments
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   4         4         4            4           59m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployments
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   4         4         4            4           1h
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe deployments
+Name:                   kubernetes-bootcamp
+Namespace:              default
+CreationTimestamp:      Mon, 05 Nov 2018 13:52:40 +0530
+Labels:                 run=kubernetes-bootcamp
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               run=kubernetes-bootcamp
+Replicas:               4 desired | 4 updated | 4 total | 4 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  run=kubernetes-bootcamp
+  Containers:
+   kubernetes-bootcamp:
+    Image:        gcr.io/google-samples/kubernetes-bootcamp:v1
+    Port:         8080/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Progressing    True    NewReplicaSetAvailable
+  Available      True    MinimumReplicasAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   kubernetes-bootcamp-5c69669756 (4/4 replicas created)
+Events:
+  Type    Reason             Age        From                   Message
+  ----    ------             ----       ----                   -------
+  Normal  ScalingReplicaSet  <invalid>  deployment-controller  Scaled up replica set kubernetes-bootcamp-5c69669756 to 4
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe deployments -l run=kubernetes-bootcamp
+\Name:                   kubernetes-bootcamp
+Namespace:              default
+CreationTimestamp:      Mon, 05 Nov 2018 13:52:40 +0530
+Labels:                 run=kubernetes-bootcamp
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               run=kubernetes-bootcamp
+Replicas:               4 desired | 4 updated | 4 total | 4 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  run=kubernetes-bootcamp
+  Containers:
+   kubernetes-bootcamp:
+    Image:        gcr.io/google-samples/kubernetes-bootcamp:v1
+    Port:         8080/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Progressing    True    NewReplicaSetAvailable
+  Available      True    MinimumReplicasAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   kubernetes-bootcamp-5c69669756 (4/4 replicas created)
+Events:
+  Type    Reason             Age        From                   Message
+  ----    ------             ----       ----                   -------
+  Normal  ScalingReplicaSet  <invalid>  deployment-controller  Scaled up replica set kubernetes-bootcamp-5c69669756 to 4
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods -o wide
+NAME                                   READY   STATUS    RESTARTS   AGE   IP           NODE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running   0          1h    172.17.0.5   minikube
+kubernetes-bootcamp-5c69669756-5xdjb   1/1     Running   0          54s   172.17.0.7   minikube
+kubernetes-bootcamp-5c69669756-6rqst   1/1     Running   0          54s   172.17.0.6   minikube
+kubernetes-bootcamp-5c69669756-bk677   1/1     Running   0          54s   172.17.0.8   minikube
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods
+NAME                                   READY   STATUS    RESTARTS   AGE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running   0          1h
+kubernetes-bootcamp-5c69669756-5xdjb   1/1     Running   0          58s
+kubernetes-bootcamp-5c69669756-6rqst   1/1     Running   0          58s
+kubernetes-bootcamp-5c69669756-bk677   1/1     Running   0          58s
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods -o wide
+NAME                                   READY   STATUS    RESTARTS   AGE   IP           NODE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running   0          1h    172.17.0.5   minikube
+kubernetes-bootcamp-5c69669756-5xdjb   1/1     Running   0          1m    172.17.0.7   minikube
+kubernetes-bootcamp-5c69669756-6rqst   1/1     Running   0          1m    172.17.0.6   minikube
+kubernetes-bootcamp-5c69669756-bk677   1/1     Running   0          1m    172.17.0.8   minikube
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe services
+Name:              kubernetes
+Namespace:         default
+Labels:            component=apiserver
+                   provider=kubernetes
+Annotations:       <none>
+Selector:          <none>
+Type:              ClusterIP
+IP:                10.96.0.1
+Port:              https  443/TCP
+TargetPort:        8443/TCP
+Endpoints:         172.16.2.130:8443
+Session Affinity:  ClientIP
+Events:            <none>
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe deployments/kubernetes-bootcamp
+Name:                   kubernetes-bootcamp
+Namespace:              default
+CreationTimestamp:      Mon, 05 Nov 2018 13:52:40 +0530
+Labels:                 run=kubernetes-bootcamp
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               run=kubernetes-bootcamp
+Replicas:               4 desired | 4 updated | 4 total | 4 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  run=kubernetes-bootcamp
+  Containers:
+   kubernetes-bootcamp:
+    Image:        gcr.io/google-samples/kubernetes-bootcamp:v1
+    Port:         8080/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Progressing    True    NewReplicaSetAvailable
+  Available      True    MinimumReplicasAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   kubernetes-bootcamp-5c69669756 (4/4 replicas created)
+Events:
+  Type    Reason             Age        From                   Message
+  ----    ------             ----       ----                   -------
+  Normal  ScalingReplicaSet  <invalid>  deployment-controller  Scaled up replica set kubernetes-bootcamp-5c69669756 to 4
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe services/kubernetes-bootcamp
+Error from server (NotFound): services "kubernetes-bootcamp" not found
+SEVELUCH-M-R0YB:~ seveluch$ kubectl expose deployment/kubernetes-bootcamp --type="NodePort" --port 8080
+service/kubernetes-bootcamp exposed
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe services/kubernetes-bootcamp
+Name:                     kubernetes-bootcamp
+Namespace:                default
+Labels:                   run=kubernetes-bootcamp
+Annotations:              <none>
+Selector:                 run=kubernetes-bootcamp
+Type:                     NodePort
+IP:                       10.100.39.141
+Port:                     <unset>  8080/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  32547/TCP
+Endpoints:                172.17.0.5:8080,172.17.0.6:8080,172.17.0.7:8080 + 1 more...
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+SEVELUCH-M-R0YB:~ seveluch$ ifconfig vmnet8
+vmnet8: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	ether 00:50:56:c0:00:08
+	inet 172.16.2.1 netmask 0xffffff00 broadcast 172.16.2.255
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-bk677 | v=1
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-6rqst | v=1
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-5xdjb | v=1
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-5xdjb | v=1
+SEVELUCH-M-R0YB:~ seveluch$ ##Everytime curl reaches different endpoints
+SEVELUCH-M-R0YB:~ seveluch$ kubectl scale deployments/kubernetes-bootcamp --replicas=2
+deployment.extensions/kubernetes-bootcamp scaled
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-bk677 | v=1
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods
+NAME                                   READY   STATUS        RESTARTS   AGE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running       0          1h
+kubernetes-bootcamp-5c69669756-5xdjb   1/1     Terminating   0          4m
+kubernetes-bootcamp-5c69669756-6rqst   1/1     Terminating   0          4m
+kubernetes-bootcamp-5c69669756-bk677   1/1     Running       0          4m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods
+NAME                                   READY   STATUS        RESTARTS   AGE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running       0          1h
+kubernetes-bootcamp-5c69669756-5xdjb   1/1     Terminating   0          4m
+kubernetes-bootcamp-5c69669756-6rqst   1/1     Terminating   0          4m
+kubernetes-bootcamp-5c69669756-bk677   1/1     Running       0          4m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods
+NAME                                   READY   STATUS        RESTARTS   AGE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running       0          1h
+kubernetes-bootcamp-5c69669756-5xdjb   1/1     Terminating   0          4m
+kubernetes-bootcamp-5c69669756-6rqst   1/1     Terminating   0          4m
+kubernetes-bootcamp-5c69669756-bk677   1/1     Running       0          4m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods
+NAME                                   READY   STATUS        RESTARTS   AGE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running       0          1h
+kubernetes-bootcamp-5c69669756-5xdjb   1/1     Terminating   0          4m
+kubernetes-bootcamp-5c69669756-6rqst   1/1     Terminating   0          4m
+kubernetes-bootcamp-5c69669756-bk677   1/1     Running       0          4m
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-bk677 | v=1
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-bk677 | v=1
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-246td | v=1
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-bk677 | v=1
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-bk677 | v=1
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-bk677 | v=1
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-bk677 | v=1
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-bk677 | v=1
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-bk677 | v=1
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-246td | v=1
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-246td | v=1
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-5c69669756-bk677 | v=1
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods
+NAME                                   READY   STATUS        RESTARTS   AGE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running       0          1h
+kubernetes-bootcamp-5c69669756-5xdjb   0/1     Terminating   0          5m
+kubernetes-bootcamp-5c69669756-6rqst   0/1     Terminating   0          5m
+kubernetes-bootcamp-5c69669756-bk677   1/1     Running       0          5m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployments
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   2         2         2            2           1h
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods -o wide
+NAME                                   READY   STATUS    RESTARTS   AGE   IP           NODE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running   0          1h    172.17.0.5   minikube
+kubernetes-bootcamp-5c69669756-bk677   1/1     Running   0          5m    172.17.0.8   minikube
+SEVELUCH-M-R0YB:~ seveluch$ kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v2
+deployment.extensions/kubernetes-bootcamp image updated
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods -o wide
+NAME                                   READY   STATUS              RESTARTS   AGE   IP           NODE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running             0          1h    172.17.0.5   minikube
+kubernetes-bootcamp-5c69669756-bk677   1/1     Running             0          5m    172.17.0.8   minikube
+kubernetes-bootcamp-7799cbcb86-cvj2g   0/1     ContainerCreating   0          2s    <none>       minikube
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods -o wide
+NAME                                   READY   STATUS              RESTARTS   AGE   IP           NODE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running             0          1h    172.17.0.5   minikube
+kubernetes-bootcamp-5c69669756-bk677   1/1     Running             0          5m    172.17.0.8   minikube
+kubernetes-bootcamp-7799cbcb86-cvj2g   0/1     ContainerCreating   0          3s    <none>       minikube
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods -o wide
+NAME                                   READY   STATUS              RESTARTS   AGE   IP           NODE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running             0          1h    172.17.0.5   minikube
+kubernetes-bootcamp-5c69669756-bk677   1/1     Running             0          5m    172.17.0.8   minikube
+kubernetes-bootcamp-7799cbcb86-cvj2g   0/1     ContainerCreating   0          4s    <none>       minikube
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods -o wide
+NAME                                   READY   STATUS              RESTARTS   AGE   IP           NODE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running             0          1h    172.17.0.5   minikube
+kubernetes-bootcamp-5c69669756-bk677   1/1     Running             0          5m    172.17.0.8   minikube
+kubernetes-bootcamp-7799cbcb86-cvj2g   0/1     ContainerCreating   0          5s    <none>       minikube
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods -o wide
+NAME                                   READY   STATUS              RESTARTS   AGE   IP           NODE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running             0          1h    172.17.0.5   minikube
+kubernetes-bootcamp-5c69669756-bk677   1/1     Running             0          5m    172.17.0.8   minikube
+kubernetes-bootcamp-7799cbcb86-cvj2g   0/1     ContainerCreating   0          6s    <none>       minikube
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods -o wide
+NAME                                   READY   STATUS              RESTARTS   AGE   IP           NODE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running             0          1h    172.17.0.5   minikube
+kubernetes-bootcamp-5c69669756-bk677   1/1     Running             0          5m    172.17.0.8   minikube
+kubernetes-bootcamp-7799cbcb86-cvj2g   0/1     ContainerCreating   0          7s    <none>       minikube
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods -o wide
+NAME                                   READY   STATUS              RESTARTS   AGE   IP           NODE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running             0          1h    172.17.0.5   minikube
+kubernetes-bootcamp-5c69669756-bk677   1/1     Running             0          5m    172.17.0.8   minikube
+kubernetes-bootcamp-7799cbcb86-cvj2g   0/1     ContainerCreating   0          7s    <none>       minikube
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods -o wide
+NAME                                   READY   STATUS              RESTARTS   AGE   IP           NODE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running             0          1h    172.17.0.5   minikube
+kubernetes-bootcamp-5c69669756-bk677   1/1     Running             0          5m    172.17.0.8   minikube
+kubernetes-bootcamp-7799cbcb86-cvj2g   0/1     ContainerCreating   0          8s    <none>       minikube
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods -o wide
+NAME                                   READY   STATUS        RESTARTS   AGE   IP           NODE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running       0          1h    172.17.0.5   minikube
+kubernetes-bootcamp-5c69669756-bk677   1/1     Terminating   0          5m    172.17.0.8   minikube
+kubernetes-bootcamp-7799cbcb86-7zfcs   0/1     Pending       0          0s    <none>       <none>
+kubernetes-bootcamp-7799cbcb86-cvj2g   1/1     Running       0          9s    172.17.0.6   minikube
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods -o wide
+NAME                                   READY   STATUS              RESTARTS   AGE   IP           NODE
+kubernetes-bootcamp-5c69669756-246td   1/1     Running             0          1h    172.17.0.5   minikube
+kubernetes-bootcamp-5c69669756-bk677   1/1     Terminating         0          5m    172.17.0.8   minikube
+kubernetes-bootcamp-7799cbcb86-7zfcs   0/1     ContainerCreating   0          1s    <none>       minikube
+kubernetes-bootcamp-7799cbcb86-cvj2g   1/1     Running             0          10s   172.17.0.6   minikube
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployments -o wide
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS            IMAGES                             SELECTOR
+kubernetes-bootcamp   2         2         2            2           1h    kubernetes-bootcamp   jocatalin/kubernetes-bootcamp:v2   run=kubernetes-bootcamp
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployments -o wide
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS            IMAGES                             SELECTOR
+kubernetes-bootcamp   2         2         2            2           1h    kubernetes-bootcamp   jocatalin/kubernetes-bootcamp:v2   run=kubernetes-bootcamp
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployments
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   2         2         2            2           1h
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployments -o wide
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS            IMAGES                             SELECTOR
+kubernetes-bootcamp   2         2         2            2           1h    kubernetes-bootcamp   jocatalin/kubernetes-bootcamp:v2   run=kubernetes-bootcamp
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get services
+NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP          1h
+kubernetes-bootcamp   NodePort    10.100.39.141   <none>        8080:32547/TCP   3m
+SEVELUCH-M-R0YB:~ seveluch$  -o wide
+-bash: -o: command not found
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get services -o wide
+NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE   SELECTOR
+kubernetes            ClusterIP   10.96.0.1       <none>        443/TCP          1h    <none>
+kubernetes-bootcamp   NodePort    10.100.39.141   <none>        8080:32547/TCP   3m    run=kubernetes-bootcamp
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get services/kubernetes-bootcamp
+NAME                  TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes-bootcamp   NodePort   10.100.39.141   <none>        8080:32547/TCP   3m
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-7799cbcb86-7zfcs | v=2
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-7799cbcb86-7zfcs | v=2
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-7799cbcb86-7zfcs | v=2
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-7799cbcb86-7zfcs | v=2
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-7799cbcb86-7zfcs | v=2
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-7799cbcb86-7zfcs | v=2
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-7799cbcb86-cvj2g | v=2
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-7799cbcb86-7zfcs | v=2
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-7799cbcb86-7zfcs | v=2
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-7799cbcb86-7zfcs | v=2
+SEVELUCH-M-R0YB:~ seveluch$ curl 172.16.2.130:32547
+Hello Kubernetes bootcamp! | Running on: kubernetes-bootcamp-7799cbcb86-7zfcs | v=2
+SEVELUCH-M-R0YB:~ seveluch$ kubectl rollout status deployments/kubernetes-bootcamp
+deployment "kubernetes-bootcamp" successfully rolled out
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployments
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   2         2         2            2           1h
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods -o wide
+NAME                                   READY   STATUS    RESTARTS   AGE   IP           NODE
+kubernetes-bootcamp-7799cbcb86-7zfcs   1/1     Running   0          1m    172.17.0.7   minikube
+kubernetes-bootcamp-7799cbcb86-cvj2g   1/1     Running   0          2m    172.17.0.6   minikube
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods
+NAME                                   READY   STATUS    RESTARTS   AGE
+kubernetes-bootcamp-7799cbcb86-7zfcs   1/1     Running   0          2m
+kubernetes-bootcamp-7799cbcb86-cvj2g   1/1     Running   0          2m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=gcr.io/google-samples/kubernetes-bootcamp:v10
+deployment.extensions/kubernetes-bootcamp image updated
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployments
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   2         3         1            2           1h
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployments
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   2         3         1            2           1h
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployments
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   2         3         1            2           1h
+SEVELUCH-M-R0YB:~ seveluch$ kubectl rollout status deployments/kubernetes-bootcamp
+Waiting for deployment "kubernetes-bootcamp" rollout to finish: 1 out of 2 new replicas have been updated...
+^[^CSEVELUCH-M-R0YB:~ seveluch$
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployments
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   2         3         1            2           1h
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods
+NAME                                   READY   STATUS         RESTARTS   AGE
+kubernetes-bootcamp-5f76cd7b94-dvwhr   0/1     ErrImagePull   0          40s
+kubernetes-bootcamp-7799cbcb86-7zfcs   1/1     Running        0          3m
+kubernetes-bootcamp-7799cbcb86-cvj2g   1/1     Running        0          3m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe pods
+Name:           kubernetes-bootcamp-5f76cd7b94-dvwhr
+Namespace:      default
+Node:           minikube/172.16.2.130
+Start Time:     Mon, 05 Nov 2018 15:00:36 +0530
+Labels:         pod-template-hash=1932783650
+                run=kubernetes-bootcamp
+Annotations:    <none>
+Status:         Pending
+IP:             172.17.0.5
+Controlled By:  ReplicaSet/kubernetes-bootcamp-5f76cd7b94
+Containers:
+  kubernetes-bootcamp:
+    Container ID:
+    Image:          gcr.io/google-samples/kubernetes-bootcamp:v10
+    Image ID:
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Waiting
+      Reason:       ImagePullBackOff
+    Ready:          False
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9gnmw (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          False
+  PodScheduled   True
+Volumes:
+  default-token-9gnmw:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-9gnmw
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type     Reason                 Age                            From               Message
+  ----     ------                 ----                           ----               -------
+  Normal   Scheduled              <invalid>                      default-scheduler  Successfully assigned kubernetes-bootcamp-5f76cd7b94-dvwhr to minikube
+  Normal   SuccessfulMountVolume  <invalid>                      kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-9gnmw"
+  Normal   Pulling                <invalid> (x3 over <invalid>)  kubelet, minikube  pulling image "gcr.io/google-samples/kubernetes-bootcamp:v10"
+  Warning  Failed                 <invalid> (x3 over <invalid>)  kubelet, minikube  Failed to pull image "gcr.io/google-samples/kubernetes-bootcamp:v10": rpc error: code = Unknown desc = Error response from daemon: manifest for gcr.io/google-samples/kubernetes-bootcamp:v10 not found
+  Warning  Failed                 <invalid> (x3 over <invalid>)  kubelet, minikube  Error: ErrImagePull
+  Normal   BackOff                <invalid> (x4 over <invalid>)  kubelet, minikube  Back-off pulling image "gcr.io/google-samples/kubernetes-bootcamp:v10"
+  Warning  Failed                 <invalid> (x4 over <invalid>)  kubelet, minikube  Error: ImagePullBackOff
+
+
+Name:           kubernetes-bootcamp-7799cbcb86-7zfcs
+Namespace:      default
+Node:           minikube/172.16.2.130
+Start Time:     Mon, 05 Nov 2018 14:58:14 +0530
+Labels:         pod-template-hash=3355767642
+                run=kubernetes-bootcamp
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.7
+Controlled By:  ReplicaSet/kubernetes-bootcamp-7799cbcb86
+Containers:
+  kubernetes-bootcamp:
+    Container ID:   docker://9ae505281233797395bbc41eae7decc3aae78d6399e380e2c7d053cae276bf41
+    Image:          jocatalin/kubernetes-bootcamp:v2
+    Image ID:       docker-pullable://jocatalin/kubernetes-bootcamp@sha256:fb1a3ced00cecfc1f83f18ab5cd14199e30adc1b49aa4244f5d65ad3f5feb2a5
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 05 Nov 2018 14:58:15 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9gnmw (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-9gnmw:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-9gnmw
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age        From               Message
+  ----    ------                 ----       ----               -------
+  Normal  Scheduled              <invalid>  default-scheduler  Successfully assigned kubernetes-bootcamp-7799cbcb86-7zfcs to minikube
+  Normal  SuccessfulMountVolume  <invalid>  kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-9gnmw"
+  Normal  Pulled                 <invalid>  kubelet, minikube  Container image "jocatalin/kubernetes-bootcamp:v2" already present on machine
+  Normal  Created                <invalid>  kubelet, minikube  Created container
+  Normal  Started                <invalid>  kubelet, minikube  Started container
+
+
+Name:           kubernetes-bootcamp-7799cbcb86-cvj2g
+Namespace:      default
+Node:           minikube/172.16.2.130
+Start Time:     Mon, 05 Nov 2018 14:58:05 +0530
+Labels:         pod-template-hash=3355767642
+                run=kubernetes-bootcamp
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.6
+Controlled By:  ReplicaSet/kubernetes-bootcamp-7799cbcb86
+Containers:
+  kubernetes-bootcamp:
+    Container ID:   docker://b17f9e347de388f9728b8869acf69c7f138c129519ad446cd2ed6bab2abfc99e
+    Image:          jocatalin/kubernetes-bootcamp:v2
+    Image ID:       docker-pullable://jocatalin/kubernetes-bootcamp@sha256:fb1a3ced00cecfc1f83f18ab5cd14199e30adc1b49aa4244f5d65ad3f5feb2a5
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 05 Nov 2018 14:58:14 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9gnmw (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-9gnmw:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-9gnmw
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age        From               Message
+  ----    ------                 ----       ----               -------
+  Normal  Scheduled              <invalid>  default-scheduler  Successfully assigned kubernetes-bootcamp-7799cbcb86-cvj2g to minikube
+  Normal  SuccessfulMountVolume  <invalid>  kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-9gnmw"
+  Normal  Pulling                <invalid>  kubelet, minikube  pulling image "jocatalin/kubernetes-bootcamp:v2"
+  Normal  Pulled                 <invalid>  kubelet, minikube  Successfully pulled image "jocatalin/kubernetes-bootcamp:v2"
+  Normal  Created                <invalid>  kubelet, minikube  Created container
+  Normal  Started                <invalid>  kubelet, minikube  Started container
+SEVELUCH-M-R0YB:~ seveluch$ kubectl rollout undo deployments/kubernetes-bootcamp
+deployment.extensions/kubernetes-bootcamp
+SEVELUCH-M-R0YB:~ seveluch$ kubectl describe pods
+Name:           kubernetes-bootcamp-7799cbcb86-7zfcs
+Namespace:      default
+Node:           minikube/172.16.2.130
+Start Time:     Mon, 05 Nov 2018 14:58:14 +0530
+Labels:         pod-template-hash=3355767642
+                run=kubernetes-bootcamp
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.7
+Controlled By:  ReplicaSet/kubernetes-bootcamp-7799cbcb86
+Containers:
+  kubernetes-bootcamp:
+    Container ID:   docker://9ae505281233797395bbc41eae7decc3aae78d6399e380e2c7d053cae276bf41
+    Image:          jocatalin/kubernetes-bootcamp:v2
+    Image ID:       docker-pullable://jocatalin/kubernetes-bootcamp@sha256:fb1a3ced00cecfc1f83f18ab5cd14199e30adc1b49aa4244f5d65ad3f5feb2a5
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 05 Nov 2018 14:58:15 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9gnmw (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-9gnmw:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-9gnmw
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age        From               Message
+  ----    ------                 ----       ----               -------
+  Normal  Scheduled              <invalid>  default-scheduler  Successfully assigned kubernetes-bootcamp-7799cbcb86-7zfcs to minikube
+  Normal  SuccessfulMountVolume  <invalid>  kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-9gnmw"
+  Normal  Pulled                 <invalid>  kubelet, minikube  Container image "jocatalin/kubernetes-bootcamp:v2" already present on machine
+  Normal  Created                <invalid>  kubelet, minikube  Created container
+  Normal  Started                <invalid>  kubelet, minikube  Started container
+
+
+Name:           kubernetes-bootcamp-7799cbcb86-cvj2g
+Namespace:      default
+Node:           minikube/172.16.2.130
+Start Time:     Mon, 05 Nov 2018 14:58:05 +0530
+Labels:         pod-template-hash=3355767642
+                run=kubernetes-bootcamp
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.6
+Controlled By:  ReplicaSet/kubernetes-bootcamp-7799cbcb86
+Containers:
+  kubernetes-bootcamp:
+    Container ID:   docker://b17f9e347de388f9728b8869acf69c7f138c129519ad446cd2ed6bab2abfc99e
+    Image:          jocatalin/kubernetes-bootcamp:v2
+    Image ID:       docker-pullable://jocatalin/kubernetes-bootcamp@sha256:fb1a3ced00cecfc1f83f18ab5cd14199e30adc1b49aa4244f5d65ad3f5feb2a5
+    Port:           8080/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 05 Nov 2018 14:58:14 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9gnmw (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-9gnmw:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-9gnmw
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age        From               Message
+  ----    ------                 ----       ----               -------
+  Normal  Scheduled              <invalid>  default-scheduler  Successfully assigned kubernetes-bootcamp-7799cbcb86-cvj2g to minikube
+  Normal  SuccessfulMountVolume  <invalid>  kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-9gnmw"
+  Normal  Pulling                <invalid>  kubelet, minikube  pulling image "jocatalin/kubernetes-bootcamp:v2"
+  Normal  Pulled                 <invalid>  kubelet, minikube  Successfully pulled image "jocatalin/kubernetes-bootcamp:v2"
+  Normal  Created                <invalid>  kubelet, minikube  Created container
+  Normal  Started                <invalid>  kubelet, minikube  Started container
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get pods
+NAME                                   READY   STATUS    RESTARTS   AGE
+kubernetes-bootcamp-7799cbcb86-7zfcs   1/1     Running   0          3m
+kubernetes-bootcamp-7799cbcb86-cvj2g   1/1     Running   0          4m
+SEVELUCH-M-R0YB:~ seveluch$ kubectl get deployments
+NAME                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+kubernetes-bootcamp   2         2         2            2           1h
+SEVELUCH-M-R0YB:~ seveluch$

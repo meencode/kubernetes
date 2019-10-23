@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello-visits
+spec:
+  replicas: 1
+  # selector identifies the set of Pods that this
+  template:
+    metadata:
+      labels:
+        # Important: these labels need to match the selector above
+        # The api server enforces this constraint.
+        app: hello-visits
+    spec:
+      containers:
+      - name: hello-visits
+        image: meencloud/hello-visits:v5
+        ports:
+        - containerPort: 80
+

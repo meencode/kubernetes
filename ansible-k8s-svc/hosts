@@ -1,0 +1,8 @@
+[sapro_group]
+10.28.112.4
+10.28.112.7
+
+[sapro_group:vars]
+ansible_user=root
+ansible_ssh_pass=Grandkey1
+ansible_auth_pass=Grandkey1

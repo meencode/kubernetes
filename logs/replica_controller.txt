@@ -1,0 +1,325 @@
+Replica controller :
+SEVELUCH-M-R0YB:yaml seveluch$ vi replica-controller.yaml
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl create -f replica-controller.yaml
+error: error parsing replica-controller.yaml: error converting YAML to JSON: yaml: line 23: did not find expected key
+SEVELUCH-M-R0YB:yaml seveluch$ vi replica-controller.yaml
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl create -f replica-controller.yaml
+replicationcontroller/nginx-controller created
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get deployments
+No resources found.
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                     READY   STATUS              RESTARTS   AGE
+nginx-controller-cwqjv   0/1     ContainerCreating   0          13s
+nginx-controller-hgzk8   0/1     ContainerCreating   0          13s
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                     READY   STATUS              RESTARTS   AGE
+nginx-controller-cwqjv   0/1     ContainerCreating   0          14s
+nginx-controller-hgzk8   0/1     ContainerCreating   0          14s
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+nginx-controller-cwqjv   1/1     Running   0          43s
+nginx-controller-hgzk8   1/1     Running   0          43s
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+nginx-controller-cwqjv   1/1     Running   0          45s
+nginx-controller-hgzk8   1/1     Running   0          45s
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+nginx-controller-cwqjv   1/1     Running   0          46s
+nginx-controller-hgzk8   1/1     Running   0          46s
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get deployments
+No resources found.
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get node
+NAME       STATUS   ROLES    AGE   VERSION
+minikube   Ready    master   2h    v1.10.0
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl getcurl http://$(kubectl get pod nginx -o go-template={{.status.podIP}})
+Error from server (NotFound): pods "nginx" not found
+Error: unknown command "getcurl" for "kubectl"
+Run 'kubectl --help' for usage.
+unknown command "getcurl" for "kubectl"
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ curl http://$(kubectl get pod nginx -o go-template={{.status.podIP}})
+Error from server (NotFound): pods "nginx" not found
+curl: (3) Bad URL
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+nginx-controller-cwqjv   1/1     Running   0          1m
+nginx-controller-hgzk8   1/1     Running   0          1m
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pod
+NAME                     READY   STATUS    RESTARTS   AGE
+nginx-controller-cwqjv   1/1     Running   0          1m
+nginx-controller-hgzk8   1/1     Running   0          1m
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get services
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   2h
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl describe pod nginx-controller-cwqjv
+Name:           nginx-controller-cwqjv
+Namespace:      default
+Node:           minikube/172.16.2.130
+Start Time:     Mon, 05 Nov 2018 16:15:55 +0530
+Labels:         app=nginx
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.5
+Controlled By:  ReplicationController/nginx-controller
+Containers:
+  nginx:
+    Container ID:   docker://ad814cb3c5e9b0455eb13e4d15e16d4cdcdcc1e3eb69ed99b04088cf8080d4fb
+    Image:          nginx
+    Image ID:       docker-pullable://nginx@sha256:b73f527d86e3461fd652f62cf47e7b375196063bbbd503e853af5be16597cb2e
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 05 Nov 2018 16:16:13 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9gnmw (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-9gnmw:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-9gnmw
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age        From               Message
+  ----    ------                 ----       ----               -------
+  Normal  Scheduled              <invalid>  default-scheduler  Successfully assigned nginx-controller-cwqjv to minikube
+  Normal  SuccessfulMountVolume  <invalid>  kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-9gnmw"
+  Normal  Pulling                <invalid>  kubelet, minikube  pulling image "nginx"
+  Normal  Pulled                 <invalid>  kubelet, minikube  Successfully pulled image "nginx"
+  Normal  Created                <invalid>  kubelet, minikube  Created container
+  Normal  Started                <invalid>  kubelet, minikube  Started container
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl describe pod nginx-controller-hgzk8
+Name:           nginx-controller-hgzk8
+Namespace:      default
+Node:           minikube/172.16.2.130
+Start Time:     Mon, 05 Nov 2018 16:15:55 +0530
+Labels:         app=nginx
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.6
+Controlled By:  ReplicationController/nginx-controller
+Containers:
+  nginx:
+    Container ID:   docker://6cfb886731e4ccdc4eefa616541096f2de7aa441efb99aa86a6b80dab0ef16ce
+    Image:          nginx
+    Image ID:       docker-pullable://nginx@sha256:b73f527d86e3461fd652f62cf47e7b375196063bbbd503e853af5be16597cb2e
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 05 Nov 2018 16:16:19 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9gnmw (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-9gnmw:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-9gnmw
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age        From               Message
+  ----    ------                 ----       ----               -------
+  Normal  Scheduled              <invalid>  default-scheduler  Successfully assigned nginx-controller-hgzk8 to minikube
+  Normal  SuccessfulMountVolume  <invalid>  kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-9gnmw"
+  Normal  Pulling                <invalid>  kubelet, minikube  pulling image "nginx"
+  Normal  Pulled                 <invalid>  kubelet, minikube  Successfully pulled image "nginx"
+  Normal  Created                <invalid>  kubelet, minikube  Created container
+  Normal  Started                <invalid>  kubelet, minikube  Started container
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl describe pod nginx-controller-hgzk8
+Name:           nginx-controller-hgzk8
+Namespace:      default
+Node:           minikube/172.16.2.130
+Start Time:     Mon, 05 Nov 2018 16:15:55 +0530
+Labels:         app=nginx
+Annotations:    <none>
+Status:         Running
+IP:             172.17.0.6
+Controlled By:  ReplicationController/nginx-controller
+Containers:
+  nginx:
+    Container ID:   docker://6cfb886731e4ccdc4eefa616541096f2de7aa441efb99aa86a6b80dab0ef16ce
+    Image:          nginx
+    Image ID:       docker-pullable://nginx@sha256:b73f527d86e3461fd652f62cf47e7b375196063bbbd503e853af5be16597cb2e
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Mon, 05 Nov 2018 16:16:19 +0530
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9gnmw (ro)
+Conditions:
+  Type           Status
+  Initialized    True
+  Ready          True
+  PodScheduled   True
+Volumes:
+  default-token-9gnmw:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-9gnmw
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason                 Age        From               Message
+  ----    ------                 ----       ----               -------
+  Normal  Scheduled              <invalid>  default-scheduler  Successfully assigned nginx-controller-hgzk8 to minikube
+  Normal  SuccessfulMountVolume  <invalid>  kubelet, minikube  MountVolume.SetUp succeeded for volume "default-token-9gnmw"
+  Normal  Pulling                <invalid>  kubelet, minikube  pulling image "nginx"
+  Normal  Pulled                 <invalid>  kubelet, minikube  Successfully pulled image "nginx"
+  Normal  Created                <invalid>  kubelet, minikube  Created container
+  Normal  Started                <invalid>  kubelet, minikube  Started container
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pod
+NAME                     READY   STATUS    RESTARTS   AGE
+nginx-controller-cwqjv   1/1     Running   0          3m
+nginx-controller-hgzk8   1/1     Running   0          3m
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+nginx-controller-cwqjv   1/1     Running   0          4m
+nginx-controller-hgzk8   1/1     Running   0          4m
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get deployments
+No resources found.
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get deployment
+No resources found.
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl delete pod nginx-controller-hgzk8
+pod "nginx-controller-hgzk8" deleted
+
+
+
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+nginx-controller-cwqjv   1/1     Running   0          4m
+nginx-controller-t6z6j   1/1     Running   0          11s
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+nginx-controller-cwqjv   1/1     Running   0          4m
+nginx-controller-t6z6j   1/1     Running   0          12s
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get deployment
+No resources found.
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get rc
+NAME               DESIRED   CURRENT   READY   AGE
+nginx-controller   2         2         2       9m
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl scale --replicas=4 -f replica-controller.yaml
+replicationcontroller/nginx-controller scaled
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get rc
+\NAME               DESIRED   CURRENT   READY   AGE
+nginx-controller   4         4         2       10m
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                     READY   STATUS              RESTARTS   AGE
+nginx-controller-cwqjv   1/1     Running             0          10m
+nginx-controller-k4kcz   0/1     ContainerCreating   0          8s
+nginx-controller-t6z6j   1/1     Running             0          5m
+nginx-controller-xprxq   0/1     ContainerCreating   0          8s
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                     READY   STATUS              RESTARTS   AGE
+nginx-controller-cwqjv   1/1     Running             0          10m
+nginx-controller-k4kcz   1/1     Running             0          9s
+nginx-controller-t6z6j   1/1     Running             0          5m
+nginx-controller-xprxq   0/1     ContainerCreating   0          9s
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                     READY   STATUS              RESTARTS   AGE
+nginx-controller-cwqjv   1/1     Running             0          10m
+nginx-controller-k4kcz   1/1     Running             0          10s
+nginx-controller-t6z6j   1/1     Running             0          5m
+nginx-controller-xprxq   0/1     ContainerCreating   0          10s
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl scale --help
+Set a new size for a Deployment, ReplicaSet, Replication Controller, or StatefulSet.
+
+Scale also allows users to specify one or more preconditions for the scale action.
+
+If --current-replicas or --resource-version is specified, it is validated before the scale is attempted, and it is
+guaranteed that the precondition holds true when the scale is sent to the server.
+
+Examples:
+  # Scale a replicaset named 'foo' to 3.
+  kubectl scale --replicas=3 rs/foo
+
+  # Scale a resource identified by type and name specified in "foo.yaml" to 3.
+  kubectl scale --replicas=3 -f foo.yaml
+
+  # If the deployment named mysql's current size is 2, scale mysql to 3.
+  kubectl scale --current-replicas=2 --replicas=3 deployment/mysql
+
+  # Scale multiple replication controllers.
+  kubectl scale --replicas=5 rc/foo rc/bar rc/baz
+
+  # Scale statefulset named 'web' to 3.
+  kubectl scale --replicas=3 statefulset/web
+
+Options:
+      --all=false: Select all resources in the namespace of the specified resource types
+      --allow-missing-template-keys=true: If true, ignore any errors in templates when a field or map key is missing in
+the template. Only applies to golang and jsonpath output formats.
+      --current-replicas=-1: Precondition for current size. Requires that the current size of the resource match this
+value in order to scale.
+  -f, --filename=[]: Filename, directory, or URL to files identifying the resource to set a new size
+  -o, --output='': Output format. One of:
+json|yaml|name|template|go-template|go-template-file|templatefile|jsonpath|jsonpath-file.
+      --record=false: Record current kubectl command in the resource annotation. If set to false, do not record the
+command. If set to true, record the command. If not set, default to updating the existing annotation value only if one
+already exists.
+  -R, --recursive=false: Process the directory used in -f, --filename recursively. Useful when you want to manage
+related manifests organized within the same directory.
+      --replicas=0: The new desired number of replicas. Required.
+      --resource-version='': Precondition for resource version. Requires that the current resource version match this
+value in order to scale.
+  -l, --selector='': Selector (label query) to filter on, supports '=', '==', and '!='.(e.g. -l key1=value1,key2=value2)
+      --template='': Template string or path to template file to use when -o=go-template, -o=go-template-file. The
+template format is golang templates [http://golang.org/pkg/text/template/#pkg-overview].
+      --timeout=0s: The length of time to wait before giving up on a scale operation, zero means don't wait. Any other
+values should contain a corresponding time unit (e.g. 1s, 2m, 3h).
+
+Usage:
+  kubectl scale [--resource-version=version] [--current-replicas=count] --replicas=COUNT (-f FILENAME | TYPE NAME)
+[options]
+
+Use "kubectl options" for a list of global command-line options (applies to all commands).
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get rc
+NAME               DESIRED   CURRENT   READY   AGE
+nginx-controller   4         4         4       11m
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl delete rc/nginx-controller
+replicationcontroller "nginx-controller" deleted
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get rc
+No resources found.
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                     READY   STATUS        RESTARTS   AGE
+nginx-controller-k4kcz   0/1     Terminating   0          1m
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+No resources found.
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+No resources found.
+SEVELUCH-M-R0YB:yaml seveluch$

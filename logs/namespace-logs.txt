@@ -1,0 +1,89 @@
+master $ mkdir /pods-manifests
+mkdir: cannot create directory ‘/pods-manifests’: File exists
+master $ launch.sh
+Waiting for Kubernetes to start...
+
+
+Kubernetes started
+master $
+master $
+master $ kubectl get namespace
+NAME          STATUS    AGE
+default       Active    16s
+kube-public   Active    16s
+kube-system   Active    16s
+master $ kubectl get pods -n kube-system; echo
+NAME                       READY     STATUS    RESTARTS   AGE
+coredns-78fcdf6894-ggwbg   0/1       Pending   0          9s
+coredns-78fcdf6894-rdk76   0/1       Pending   0          9s
+kube-proxy-f7qfc           1/1       Running   0          9s
+weave-net-52nzn            2/2       Running   0          9s
+
+master $ kubectl get pods -n kube-public; echo
+No resources found.
+
+master $ kubectl get configmap -n kube-public cluster-info -o yaml; echo
+apiVersion: v1
+data:
+  jws-kubeconfig-96771a: eyJhbGciOiJIUzI1NiIsImtpZCI6Ijk2NzcxYSJ9..3dlpY99zTSmq_GoQwGjSoWaTp1WR6o7GSwxNCLMxFtw
+  kubeconfig: |
+    apiVersion: v1
+    clusters:
+    - cluster:
+        certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN5RENDQWJDZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRFNE1URXdPREF5TVRJeU9Wb1hEVEk0TVRFd05UQXlNVEl5T1Zvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTTdDClBiY0MvdHJYRFlROTMzQk5KQVkzNGMxS25xMTZURFVhTXRheTlFUi9rcHZnS3JRNlR3Q3RCcERwK2Y4MnBkSS8KWWFUUDRZSFFEUG1KMXY0MkdPTjM4citFNCtyWGN4WVI2ZGtvdGY3Qm96aExUNVhRNVRlS2o3Y3ZsRUZGRkdaSAp6TXlRT2ttYk8wZTg5NE93WW51aGhQWXplTmc4TGU2YUsvZTJDL0FOZ29pUTNUb0hQNzRDNUg3M1lMYng0cDZoCndZOFVoNFpuKzFlQXlSc1dxQ1VobFBvK3hEejB6VENJak9zWGZMVSthOTlvSlRPRG5SV1BkbVplTVkzNWRKTjIKaXQwaDdLREFnVjYwZ2Z1UStpcGlldWljRHZCOERMWE5oaWRrU1BjMTZ4YlBHQUs4S0UzZXpaNXVnbG1zdjRPUApKL2pVaTlQc3puZFRZVWxZcGU4Q0F3RUFBYU1qTUNFd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQkFINDNlWVFaZnJQVEk2eFNmRndUK0xiQ2FhY0QKbGxYYkwwZFZDLzRKcHZKR093RXViUWlGU1NqbHhld1ZLZEw1Um80Qzc4VmtxVUpEWGtMRGxldTU3NnhWTHhDUApuWmlvNmV5L05VbnJra0ZReFJpNG8ybnVBcnA2T2hkNlhvcXUyelFGQU5zdWRlbFdoR3ROeGJETFBkTzhscVEyCjFHajlzN3FhOFM3T3IvTGE2Ym5DZ0FBdU5iQ3NnRHprVXVYWUZ0RXk5NWdUeFhZU25LbS9Ob2pRaWg2Z25Ea3EKc2Rzdk1leUMvUEZjekEvMXlsWUFMNWxnZUo1WE1pcm44N0krbitlWWhwanBjSTk0aWYzb0hma0JkMjRvNFJpUgo2MnN6Ykdxb2lVZDN2ZlljS3d2UThEWGlHVnd0YTh0cTVSdnFkL1l1UDY3T0RVTXhZMzhMOWt6alpTZz0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+        server: https://172.17.0.107:6443
+      name: ""
+    contexts: []
+    current-context: ""
+    kind: Config
+    preferences: {}
+    users: []
+kind: ConfigMap
+metadata:
+  creationTimestamp: 2018-11-08T02:13:25Z
+  name: cluster-info
+  namespace: kube-public
+  resourceVersion: "312"
+  selfLink: /api/v1/namespaces/kube-public/configmaps/cluster-info
+  uid: dfa5f636-e2fb-11e8-b9ea-0242ac11006b
+
+master $ kubectl get pods -n default; echo
+No resources found.
+
+master $ kubectl create namespace dev-service1
+namespace/dev-service1 created
+master $ kubectl get namespaces
+NAME           STATUS    AGE
+default        Active    1m
+dev-service1   Active    50s
+kube-public    Active    1m
+kube-system    Active    1m
+master $ kubectl delete -f /pods-manifests/test-namespace.yaml
+Error from server (NotFound): error when deleting "/pods-manifests/test-namespace.yaml": namespaces "test" not found
+master $ kubectl delete namespace test
+Error from server (NotFound): namespaces "test" not found
+master $ kubectl get namespaces
+NAME           STATUS    AGE
+default        Active    1m
+dev-service1   Active    1m
+kube-public    Active    1m
+kube-system    Active    1m
+master $ kubectl apply -f /pods-manifests/pod.yaml
+pod/happypanda created
+master $ kubectl get pods
+NAME         READY     STATUS    RESTARTS   AGE
+happypanda   1/1       Running   0          19s
+master $ kubectl delete -f /pods-manifests/pod.yaml
+pod "happypanda" deleted
+kubectl delete pod happypanda
+master $ kubectl delete pod happypanda
+Error from server (NotFound): pods "happypanda" not found
+master $ kubectl get pods
+No resources found.
+master $ kubectl apply -f /pods-manifests/pod-namespace.yaml
+pod/happypanda created
+master $ kubectl get pods -n dev-service1
+NAME         READY     STATUS    RESTARTS   AGE
+happypanda   1/1       Running   0          4s
+master $ kubectl apply -f /pods-manifests/pod-namespace.yaml
+pod/happypanda unchanged

@@ -1,0 +1,28 @@
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl scale --current-replicas=2 --replicas=3 deployment/hello-visits
+error: Expected replicas to be 2, was 1
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl scale --current-replicas=1 --replicas=3 deployment/hello-visits
+deployment.extensions/hello-visits scaled
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ kubectl get pods
+NAME                            READY   STATUS              RESTARTS   AGE
+hello-visits-7bcdcdf454-ff6jf   0/1     ContainerCreating   0          5s
+hello-visits-7bcdcdf454-k547x   0/1     ContainerCreating   0          5s
+hello-visits-7bcdcdf454-ldgml   1/1     Running             0          28m
+SEVELUCH-M-R0YB:yaml seveluch$
+
+
+
+SEVELUCH-M-R0YB:yaml seveluch$ !cur
+curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-ldgml<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 772133SEVELUCH-M-R0YB:yaml seveluch$ curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-k547x<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 450746SEVELUCH-M-R0YB:yaml seveluch$ curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-ldgml<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 178495SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$
+SEVELUCH-M-R0YB:yaml seveluch$ curl http://172.16.2.129:30080
+<h3>Hello World!</h3><b>Hostname:</b> hello-visits-7bcdcdf454-ff6jf<br/><b>Visits:</b> <i>cannot connect to Redis, counter disabled</i><br/><b>Version:</b> latest<br/><b>Random Number :</b> 93465SEVELUCH-M-R0YB:yaml seveluch$
+
+
+

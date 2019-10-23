@@ -1,0 +1,10 @@
+Kubernetes notes
+
+
+
+Node affinity and anti affinity:
+There are 2 type of affinity soft and hard.
+In soft affinity , node with label is not found and pod will be deployed on another node
+In hard affinity , node with label is not found and pod will not be deployed in cluster
+
+Anti affinity to use not in for node label

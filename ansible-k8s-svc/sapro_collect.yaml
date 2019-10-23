@@ -1,0 +1,51 @@
+---
+- name: linux shell
+  hosts: sapro_group
+  gather_facts: false
+  vars:
+    show_output_dir: "/ansible/data/data_output_collect"
+    date_now: "{{ lookup('pipe', 'date +%Y%m%d-%H%M-%S') }}"
+  tasks:
+  - name: hostname
+    shell: hostname
+    register: hostname
+
+  - name: debug msg hostname['stdout_lines']
+    debug:
+      msg: "{{ hostname['stdout_lines'][0] }}"
+  - set_fact:
+      host_name: "{{ hostname['stdout_lines'][0] }}"
+  - debug: var=host_name
+
+  - name: lsb_release
+    shell : lsb_release -cs
+    register: output
+
+  - name: debug msg output
+    debug:
+      msg: "{{ output.stdout }}"
+  - set_fact:
+       lsb_release: "{{ output.stdout }}"
+  - debug: var=lsb_release
+
+
+  - set_fact:
+      current_dir: "{{ lookup('env', 'PWD') }}"
+  - debug: var=current_dir
+  - debug: var=date_now
+
+
+  - name: Sapro Collections
+    shell: /opt/sapro/bin/sapcnsl -p 2100 -c allstats
+    register: output
+
+  - name: debug msg output['stdout_lines']
+    debug:
+      msg: "{{ output.stdout }}"
+
+  - name: Save command output to local file
+    copy:
+      content: "{{ output.stdout }}"
+      dest: "{{ show_output_dir }}/sapro_{{host_name | regex_replace('-', '_') ~ '_' ~ date_now | regex_replace('-', '_')}}.txt"
+    delegate_to: localhost
+
